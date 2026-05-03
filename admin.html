@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin — Client Manager</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; }
+  input, textarea, select { background: #1e293b; border: 1px solid #334155; color: #e2e8f0; }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: #c9a84c; }
+</style>
+</head>
+<body class="min-h-screen p-4">
+
+<div class="max-w-6xl mx-auto">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+    <div>
+      <h1 class="text-2xl font-bold text-yellow-400">Client Manager</h1>
+      <p class="text-slate-400 text-sm">Manage all client websites from one place</p>
+    </div>
+    <button onclick="showForm()" class="bg-yellow-500 text-black px-5 py-2.5 rounded-full font-bold text-sm hover:bg-yellow-400 transition">
+      + Add Client
+    </button>
+  </div>
+
+  <!-- Config (set once) -->
+  <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
+    <p class="text-xs text-slate-400 uppercase tracking-widest mb-3 font-bold">Supabase Config (set once)</p>
+    <div class="flex gap-3 flex-wrap">
+      <input id="cfg-url" type="text" placeholder="Supabase URL (https://xxx.supabase.co)" class="flex-1 min-w-0 px-3 py-2 rounded-lg text-sm">
+      <input id="cfg-key" type="text" placeholder="Supabase Anon Key" class="flex-1 min-w-0 px-3 py-2 rounded-lg text-sm">
+      <button onclick="saveConfig()" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-500 transition">Save</button>
+    </div>
+    <p id="cfg-status" class="text-xs mt-2 text-slate-500"></p>
+  </div>
+
+  <!-- Clients list -->
+  <div id="clients-list" class="grid gap-4 mb-8">
+    <div class="text-center text-slate-500 py-12">Loading clients...</div>
+  </div>
+
+  <!-- Add/Edit Form (hidden by default) -->
+  <div id="client-form" class="hidden fixed inset-0 bg-black/80 z-50 overflow-y-auto p-4">
+    <div class="max-w-2xl mx-auto bg-slate-800 rounded-2xl p-6 mt-8 mb-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold text-yellow-400" id="form-title">Add New Client</h2>
+        <button onclick="hideForm()" class="text-slate-400 hover:text-white text-2xl">&times;</button>
+      </div>
+
+      <input type="hidden" id="f-id">
+
+      <div class="space-y-4">
+        <!-- Basic -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2">Brand</p>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="text-xs text-slate-400 block mb-1">Studio Name *</label><input id="f-studio_name" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="Aura Interiors"></div>
+          <div><label class="text-xs text-slate-400 block mb-1">URL Slug *</label><input id="f-slug" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="aura-interiors"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="text-xs text-slate-400 block mb-1">Logo Letter</label><input id="f-logo_letter" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="A" maxlength="2"></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Niche</label>
+            <select id="f-niche" class="w-full px-3 py-2 rounded-lg text-sm">
+              <option value="interior">Interior Designer</option>
+              <option value="dental">Dental Clinic</option>
+              <option value="gym">Gym / Fitness</option>
+              <option value="salon">Salon / Beauty</option>
+              <option value="cafe">Cafe / Restaurant</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div><label class="text-xs text-slate-400 block mb-1">Tagline</label><input id="f-tagline" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="Award Winning Studio"></div>
+
+        <!-- Hero -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2 pt-2">Hero</p>
+        <div><label class="text-xs text-slate-400 block mb-1">Hero Headline</label><input id="f-hero_headline" type="text" class="w-full px-3 py-2 rounded-lg text-sm"></div>
+        <div><label class="text-xs text-slate-400 block mb-1">Hero Subtext</label><textarea id="f-hero_subtext" rows="2" class="w-full px-3 py-2 rounded-lg text-sm"></textarea></div>
+        <div><label class="text-xs text-slate-400 block mb-1">Hero Image URL</label><input id="f-hero_image" type="url" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="https://..."></div>
+
+        <!-- Stats -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2 pt-2">Stats (shown on homepage)</p>
+        <div class="grid grid-cols-3 gap-3">
+          <div><label class="text-xs text-slate-400 block mb-1">Stat 1 Number</label><input id="f-stat_1_number" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="150+"></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Stat 1 Label</label><input id="f-stat_1_label" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="Projects"></div>
+          <div></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Stat 2 Number</label><input id="f-stat_2_number" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="10+"></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Stat 2 Label</label><input id="f-stat_2_label" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="Years"></div>
+          <div></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Stat 3 Number</label><input id="f-stat_3_number" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="12"></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Stat 3 Label</label><input id="f-stat_3_label" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="Cities"></div>
+          <div></div>
+        </div>
+
+        <!-- Contact -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2 pt-2">Contact</p>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="text-xs text-slate-400 block mb-1">Phone</label><input id="f-phone" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="+91 98765 43210"></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Email</label><input id="f-email" type="email" class="w-full px-3 py-2 rounded-lg text-sm"></div>
+        </div>
+        <div><label class="text-xs text-slate-400 block mb-1">WhatsApp Link</label><input id="f-whatsapp_link" type="url" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="https://wa.me/91XXXXXXXXXX?text=Hi"></div>
+        <div><label class="text-xs text-slate-400 block mb-1">Address Line 1</label><input id="f-address_line1" type="text" class="w-full px-3 py-2 rounded-lg text-sm"></div>
+        <div><label class="text-xs text-slate-400 block mb-1">Address Line 2</label><input id="f-address_line2" type="text" class="w-full px-3 py-2 rounded-lg text-sm"></div>
+        <div><label class="text-xs text-slate-400 block mb-1">Hours</label><input id="f-hours" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="Mon–Fri: 10am – 6pm"></div>
+
+        <!-- Owner -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2 pt-2">Owner / Doctor / Expert</p>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="text-xs text-slate-400 block mb-1">Owner Name</label><input id="f-owner_name" type="text" class="w-full px-3 py-2 rounded-lg text-sm"></div>
+          <div><label class="text-xs text-slate-400 block mb-1">Established Year</label><input id="f-established" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="2015"></div>
+        </div>
+        <div><label class="text-xs text-slate-400 block mb-1">Owner Bio</label><textarea id="f-owner_bio" rows="3" class="w-full px-3 py-2 rounded-lg text-sm"></textarea></div>
+        <div><label class="text-xs text-slate-400 block mb-1">Owner Image URL</label><input id="f-owner_image" type="url" class="w-full px-3 py-2 rounded-lg text-sm"></div>
+
+        <!-- Services JSON -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2 pt-2">Services (JSON)</p>
+        <p class="text-xs text-slate-500">Format: [{"title":"X","description":"Y","price":"Z"}, ...]</p>
+        <textarea id="f-services" rows="5" class="w-full px-3 py-2 rounded-lg text-xs font-mono" placeholder='[{"title":"Service 1","description":"Desc","price":"₹X"}]'></textarea>
+
+        <!-- Portfolio JSON -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2 pt-2">Portfolio (JSON)</p>
+        <p class="text-xs text-slate-500">Format: [{"image":"URL","category":"X","title":"Y"}, ...]</p>
+        <textarea id="f-portfolio" rows="5" class="w-full px-3 py-2 rounded-lg text-xs font-mono" placeholder='[{"image":"https://...","category":"Residential","title":"Project Name"}]'></textarea>
+
+        <!-- Reviews JSON -->
+        <p class="text-xs text-yellow-400 uppercase tracking-widest font-bold border-b border-white/10 pb-2 pt-2">Reviews (JSON)</p>
+        <p class="text-xs text-slate-500">Format: [{"name":"X","location":"Y","text":"Z","stars":5}, ...]</p>
+        <textarea id="f-reviews" rows="5" class="w-full px-3 py-2 rounded-lg text-xs font-mono" placeholder='[{"name":"Client Name","location":"City","text":"Review text","stars":5}]'></textarea>
+
+        <!-- Footer -->
+        <div><label class="text-xs text-slate-400 block mb-1">Footer Credit</label><input id="f-footer_credit" type="text" class="w-full px-3 py-2 rounded-lg text-sm" placeholder="Designed by Your Name"></div>
+      </div>
+
+      <div class="flex gap-3 mt-6">
+        <button onclick="saveClient()" class="flex-1 bg-yellow-500 text-black py-3 rounded-full font-bold hover:bg-yellow-400 transition">Save Client</button>
+        <button onclick="hideForm()" class="px-6 bg-slate-700 text-white py-3 rounded-full font-bold hover:bg-slate-600 transition">Cancel</button>
+      </div>
+      <p id="form-status" class="text-center text-sm mt-3"></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── Config ────────────────────────────────────────────────
+let SUPABASE_URL = localStorage.getItem('sb_url') || '';
+let SUPABASE_KEY = localStorage.getItem('sb_key') || '';
+
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('cfg-url').value = SUPABASE_URL;
+  document.getElementById('cfg-key').value = SUPABASE_KEY;
+  if (SUPABASE_URL && SUPABASE_KEY) loadClients();
+});
+
+function saveConfig() {
+  SUPABASE_URL = document.getElementById('cfg-url').value.trim();
+  SUPABASE_KEY = document.getElementById('cfg-key').value.trim();
+  localStorage.setItem('sb_url', SUPABASE_URL);
+  localStorage.setItem('sb_key', SUPABASE_KEY);
+  document.getElementById('cfg-status').textContent = '✓ Config saved. Loading clients...';
+  document.getElementById('cfg-status').className = 'text-xs mt-2 text-green-400';
+  loadClients();
+}
+
+// ── API helpers ───────────────────────────────────────────
+function headers() {
+  return { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' };
+}
+
+async function loadClients() {
+  const el = document.getElementById('clients-list');
+  el.innerHTML = '<div class="text-center text-slate-500 py-12">Loading...</div>';
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/clients?select=id,slug,studio_name,niche,phone,active&order=created_at.desc`, { headers: headers() });
+    const clients = await res.json();
+    if (!clients.length) { el.innerHTML = '<div class="text-center text-slate-500 py-12">No clients yet. Add your first one!</div>'; return; }
+    el.innerHTML = clients.map(c => `
+      <div class="bg-slate-800 rounded-xl p-4 flex items-center justify-between gap-4 border border-slate-700">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-lg">${(c.studio_name||'?')[0]}</div>
+          <div>
+            <p class="font-bold text-white">${c.studio_name}</p>
+            <p class="text-xs text-slate-400">${c.niche} &nbsp;·&nbsp; /${c.slug} &nbsp;·&nbsp; ${c.phone || 'No phone'}</p>
+          </div>
+        </div>
+        <div class="flex gap-2 shrink-0">
+          <span class="text-xs px-2 py-1 rounded-full ${c.active ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}">${c.active ? 'Live' : 'Off'}</span>
+          <button onclick="editClient('${c.id}')" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-500">Edit</button>
+          <button onclick="copyPreviewLink('${c.slug}')" class="text-xs bg-slate-600 text-white px-3 py-1.5 rounded-lg hover:bg-slate-500">🔗</button>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    el.innerHTML = `<div class="text-center text-red-400 py-12">Error: ${e.message}. Check your Supabase config.</div>`;
+  }
+}
+
+async function editClient(id) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/clients?id=eq.${id}&select=*`, { headers: headers() });
+  const [c] = await res.json();
+  const fields = ['id','studio_name','slug','logo_letter','niche','tagline','hero_headline','hero_subtext','hero_image',
+    'stat_1_number','stat_1_label','stat_2_number','stat_2_label','stat_3_number','stat_3_label',
+    'phone','email','whatsapp_link','address_line1','address_line2','hours',
+    'owner_name','owner_bio','owner_image','established','footer_credit'];
+  fields.forEach(f => {
+    const el = document.getElementById(`f-${f}`);
+    if (el) el.value = c[f] || '';
+  });
+  // JSON fields
+  ['services','portfolio','reviews'].forEach(f => {
+    const el = document.getElementById(`f-${f}`);
+    if (el) el.value = JSON.stringify(c[f] || [], null, 2);
+  });
+  document.getElementById('f-niche').value = c.niche || 'interior';
+  document.getElementById('form-title').textContent = `Edit: ${c.studio_name}`;
+  showForm();
+}
+
+async function saveClient() {
+  const statusEl = document.getElementById('form-status');
+  statusEl.textContent = 'Saving...';
+  statusEl.className = 'text-center text-sm mt-3 text-slate-400';
+
+  const id = document.getElementById('f-id').value;
+  const fields = ['studio_name','slug','logo_letter','niche','tagline','hero_headline','hero_subtext','hero_image',
+    'stat_1_number','stat_1_label','stat_2_number','stat_2_label','stat_3_number','stat_3_label',
+    'phone','email','whatsapp_link','address_line1','address_line2','hours',
+    'owner_name','owner_bio','owner_image','established','footer_credit'];
+
+  const payload = {};
+  fields.forEach(f => {
+    const el = document.getElementById(`f-${f}`);
+    if (el && el.value) payload[f] = el.value;
+  });
+
+  // Parse JSON fields
+  ['services','portfolio','reviews'].forEach(f => {
+    const el = document.getElementById(`f-${f}`);
+    if (el && el.value) {
+      try { payload[f] = JSON.parse(el.value); }
+      catch(e) { statusEl.textContent = `JSON error in ${f}: ${e.message}`; statusEl.className='text-center text-sm mt-3 text-red-400'; return; }
+    }
+  });
+
+  try {
+    let res;
+    if (id) {
+      // Update
+      payload.updated_at = new Date().toISOString();
+      res = await fetch(`${SUPABASE_URL}/rest/v1/clients?id=eq.${id}`, {
+        method: 'PATCH', headers: { ...headers(), Prefer: 'return=minimal' },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      // Insert
+      res = await fetch(`${SUPABASE_URL}/rest/v1/clients`, {
+        method: 'POST', headers: { ...headers(), Prefer: 'return=minimal' },
+        body: JSON.stringify(payload)
+      });
+    }
+    if (res.ok) {
+      statusEl.textContent = '✓ Saved successfully!';
+      statusEl.className = 'text-center text-sm mt-3 text-green-400';
+      setTimeout(() => { hideForm(); loadClients(); }, 800);
+    } else {
+      const err = await res.text();
+      statusEl.textContent = `Error: ${err}`;
+      statusEl.className = 'text-center text-sm mt-3 text-red-400';
+    }
+  } catch(e) {
+    statusEl.textContent = `Error: ${e.message}`;
+    statusEl.className = 'text-center text-sm mt-3 text-red-400';
+  }
+}
+
+function showForm() { document.getElementById('client-form').classList.remove('hidden'); }
+function hideForm() {
+  document.getElementById('client-form').classList.add('hidden');
+  document.getElementById('f-id').value = '';
+  document.getElementById('form-title').textContent = 'Add New Client';
+  document.getElementById('form-status').textContent = '';
+}
+
+function copyPreviewLink(slug) {
+  const link = `${window.location.origin}/clients/${slug}/index.html`;
+  navigator.clipboard.writeText(link).then(() => alert(`Copied link for: ${slug}\n\n${link}`));
+}
+</script>
+</body>
+</html>
