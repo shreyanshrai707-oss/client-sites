@@ -5,7 +5,7 @@
 // ============================================================
 
 const SUPABASE_URL = 'https://ghcepeyccjjzmhcgizli.supabase.co';       // ← replace once
-const SUPABASE_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdoY2VwZXljY2pqem1oY2dpemxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3NTk0NDYsImV4cCI6MjA5MzMzNTQ0Nn0.dm-sSorEev55OqLI0OEojL-iNKhw8zVeBUxG-zP4hoU;  // ← replace once
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdoY2VwZXljY2pqem1oY2dpemxpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc3NTk0NDYsImV4cCI6MjA5MzMzNTQ0Nn0.dm-sSorEev55OqLI0OEojL-iNKhw8zVeBUxG-zP4hoU';  // ← replace once
 
 // Reads ?client=slug OR folder name from URL
 function getSlug() {
