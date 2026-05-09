@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-a="page_title">Communities | Arjun Real Estate</title>
+  <script src="../../re-client.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          mocha:'var(--brand-mocha, #6B4C3B)', 
+          navy:'var(--brand-navy, #0F172A)',
+          ivory:'var(--brand-ivory, #FEFCE8)', 
+          gold:'var(--brand-gold, #C5A880)',
+          cream:'var(--brand-cream, #F5F0E8)', 
+          mist:'var(--brand-mist, #E8E2D9)'
+        },
+        fontFamily: {
+          display:['"Playfair Display"','serif'],
+          body:['"Inter Tight"','sans-serif']
+        }
+      }}
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="font-body bg-ivory text-navy antialiased">
+  
+  <nav class="sticky top-0 z-50 bg-ivory/95 border-b border-mist shadow-sm transition-all duration-300">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-8 lg:px-20 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group">
+        <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🏡</span>
+        <div class="flex flex-col leading-tight">
+          <span class="font-display font-bold text-mocha text-lg group-hover:text-navy transition-colors duration-200" data-a="agent_name">Arjun Mehta</span>
+          <span class="text-[10px] tracking-widest uppercase font-semibold opacity-70 text-navy" data-a="agent_city_tagline">Mumbai Real Estate</span>
+        </div>
+      </a>
+      <div class="hidden md:flex gap-8 items-center text-sm font-medium">
+        <a href="index.html" class="hover:text-mocha transition-colors nav-link ">Home</a>
+        <a href="communities.html" class="hover:text-mocha transition-colors nav-link text-mocha border-b-2 border-gold pb-1">Communities</a>
+        <a href="listings.html" class="hover:text-mocha transition-colors nav-link">Listings</a>
+        <a href="selling.html" class="hover:text-mocha transition-colors nav-link">Selling</a>
+        <a href="success-stories.html" class="hover:text-mocha transition-colors nav-link">Success Stories</a>
+        <a href="contact.html" class="hover:text-mocha transition-colors nav-link">Contact</a>
+        
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-navy hover:text-mocha focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-ivory border-t border-mist px-4 py-4 space-y-4 shadow-lg absolute w-full z-40">
+      <a href="index.html" class="block font-medium hover:text-mocha transition-colors nav-link ">Home</a>
+      <a href="communities.html" class="block font-medium text-mocha nav-link">Communities</a>
+      <a href="listings.html" class="block font-medium hover:text-mocha transition-colors nav-link">Listings</a>
+      <a href="selling.html" class="block font-medium hover:text-mocha transition-colors nav-link">Selling</a>
+      <a href="success-stories.html" class="block font-medium hover:text-mocha transition-colors nav-link">Success Stories</a>
+      <a href="contact.html" class="block font-medium hover:text-mocha transition-colors nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="relative w-full h-[40vh] min-h-[300px] flex items-center justify-center text-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img data-a-src="communities_hero_image" src="https://images.unsplash.com/photo-1577086664693-894d8405334a?w=1400&q=80" alt="Aerial view of community" loading="lazy" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-navy/70 to-mocha/50 z-10"></div>
+      </div>
+      <div class="relative z-20 max-w-2xl px-4 mx-auto text-white">
+        <span class="text-gold uppercase tracking-[0.2em] text-[10px] font-bold mb-4 fade-up block">NEIGHBORHOODS</span>
+        <h1 class="font-display font-bold text-4xl md:text-5xl mb-4 fade-up" style="transition-delay: 0.05s" data-a="communities_hero_headline">Discover Mumbai's Finest Communities</h1>
+        <p class="text-white/90 font-light text-lg md:text-xl fade-up max-w-lg mx-auto" style="transition-delay: 0.1s">
+          Every neighborhood has a personality. Let us help you find yours.
+        </p>
+      </div>
+    </section>
+
+    <!-- Neighborhood Cards -->
+    <section class="py-12 md:py-20 px-4 md:px-8 lg:px-20 max-w-[1200px] mx-auto">
+      <div id="dynamic-neighborhood-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Dynamic Cards Here -->
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="bg-cream py-16 px-4 md:px-8 lg:px-20 overflow-x-hidden">
+      <div class="max-w-[1200px] mx-auto fade-up">
+        <h2 class="text-2xl md:text-[2.5rem] font-display font-bold text-navy mb-8 text-center md:text-left">Side-by-Side Comparison</h2>
+        <div class="overflow-x-auto border border-mist  bg-white shadow-sm hide-scrollbar">
+          <table class="w-full text-left min-w-[800px]">
+            <thead class="bg-navy text-white text-sm uppercase tracking-wider">
+              <tr>
+                <th class="p-4 font-medium">Neighborhood</th>
+                <th class="p-4 font-medium">Avg Price</th>
+                <th class="p-4 font-medium">Avg Rent</th>
+                <th class="p-4 font-medium">Walk Score</th>
+                <th class="p-4 font-medium">Schools Rating</th>
+                <th class="p-4 font-medium">Commute to Center</th>
+                <th class="p-4 font-medium">Best For</th>
+              </tr>
+            </thead>
+            <tbody id="dynamic-comparison-table" class="text-navy text-sm *:border-b *:border-mist last:*:border-0">
+              <!-- Dynamic rows here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="bg-mocha py-16 px-4 md:px-8 lg:px-20 text-white relative">
+      <div class="max-w-[800px] mx-auto text-center fade-up">
+        <h2 class="text-3xl md:text-[2.5rem] font-display font-bold mb-4">Not Sure Where to Start?</h2>
+        <p class="text-white/80 font-body mb-10">Answer 3 questions and we'll suggest your ideal neighborhood.</p>
+        
+        <div id="quiz-container" class="bg-white/10 border border-white/20  p-6 md:p-10 text-left backdrop-blur-sm shadow-xl max-w-[600px] mx-auto">
+          <form id="quiz-form">
+            <div class="mb-6">
+              <label class="block text-sm font-bold tracking-wider uppercase text-gold mb-3">1. What matters most?</label>
+              <select id="q1" class="w-full bg-navy text-white text-sm p-3 rounded outline-none cursor-pointer border border-white/20 focus:border-gold">
+                <option value="schools">Top Schools</option>
+                <option value="nightlife">Nightlife & Dining</option>
+                <option value="space">Space & Quiet</option>
+                <option value="commute">Short Commute</option>
+              </select>
+            </div>
+            <div class="mb-6">
+              <label class="block text-sm font-bold tracking-wider uppercase text-gold mb-3">2. Your Budget?</label>
+              <select id="q2" class="w-full bg-navy text-white text-sm p-3 rounded outline-none cursor-pointer border border-white/20 focus:border-gold">
+                <option value="1">Under ₹1Cr</option>
+                <option value="2">₹1-2Cr</option>
+                <option value="3">₹2-3Cr</option>
+                <option value="4">₹3Cr+</option>
+              </select>
+            </div>
+            <div class="mb-8">
+              <label class="block text-sm font-bold tracking-wider uppercase text-gold mb-3">3. Who's moving?</label>
+              <select id="q3" class="w-full bg-navy text-white text-sm p-3 rounded outline-none cursor-pointer border border-white/20 focus:border-gold">
+                <option value="me">Just Me</option>
+                <option value="couple">Couple</option>
+                <option value="family">Family with Kids</option>
+                <option value="retirees">Retirees</option>
+              </select>
+            </div>
+            <button type="button" id="btn-quiz" class="bg-gold text-navy font-bold w-full py-3.5 rounded hover:bg-white hover:scale-[1.02] transition-all duration-200">Find My Match</button>
+          </form>
+
+          <div id="quiz-result" class="hidden text-center">
+            <h3 class="text-xl font-bold mb-2">We recommend:</h3>
+            <p id="result-name" class="font-display text-4xl text-gold font-bold mb-4">Greenview</p>
+            <p id="result-desc" class="text-white/80 mb-8">Greenview is perfect for families prioritizing space and education, fitting well within your budget parameters.</p>
+            <a id="result-link" href="contact.html" class="inline-block border border-white text-white font-medium hover:bg-gold hover:border-gold hover:text-navy px-8 py-3 rounded transition-colors duration-200">Let's Talk About Greenview &rarr;</a>
+            <button id="btn-reset" class="block w-full text-center text-sm text-white/50 mt-4 hover:text-white underline">Start over</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strip -->
+    <section class="bg-ivory py-16 md:py-24 px-4 text-center">
+      <h2 class="text-3xl md:text-[2.5rem] font-display font-bold text-navy mb-6 fade-up">Find Your Perfect Neighborhood</h2>
+      <a href="contact.html" class="inline-flex bg-gold text-navy font-medium h-[52px] px-8 rounded items-center justify-center hover:bg-navy hover:text-white transition-colors duration-200 fade-up shadow-md" style="transition-delay: 0.05s">Schedule a Community Tour &rarr;</a>
+    </section>
+
+  </main>
+
+  <a data-a-href="whatsapp_link" href="https://wa.me/919876543210" target="_blank" class="fixed bottom-6 right-6 w-[60px] h-[60px] bg-[#25d366] rounded-full flex items-center justify-center shadow-lg z-40 hover:scale-[1.05] transition-transform duration-200 animate-[pulse_3s_infinite]">
+    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.567-10.563 5.824 0 10.561 4.741 10.562 10.563s-4.739 10.564-10.562 10.564z"/></svg>
+  </a>
+
+  <footer class="h-12 bg-navy text-white/50 px-4 md:px-10 flex items-center justify-between text-[10px] uppercase tracking-widest mt-auto">
+    <p data-a="footer_copyright">&copy; 2025 Arjun Mehta Realty | All Rights Reserved</p>
+    <div class="flex gap-6">
+      <a data-a-href="relocation_guide_link" href="contact.html" class="hover:text-gold transition-colors">Relocation Guide</a>
+      <a data-a-href="privacy_link" href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
+      <a data-a-href="terms_link" href="#" class="hover:text-gold transition-colors">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    const mBtn = document.getElementById('mobile-menu-btn');
+    const mMenu = document.getElementById('mobile-menu');
+    if(mBtn && mMenu) mBtn.addEventListener('click', () => mMenu.classList.toggle('hidden'));
+
+    let dynamicQuizLogic = null; // Defined by agentLoaded
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const obs = new IntersectionObserver(e => {
+        e.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('opacity-100','translate-y-0');
+            entry.target.classList.remove('opacity-0','translate-y-4');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.15});
+      document.querySelectorAll('.fade-up').forEach(el => {
+        el.classList.add('opacity-0','translate-y-4','transition-all','duration-300');
+        obs.observe(el);
+      });
+
+      // Original Quiz Logic (will be overwritten if dynamicQuizLogic is provided)
+      const btnQuiz = document.getElementById('btn-quiz');
+      const form = document.getElementById('quiz-form');
+      const resultDiv = document.getElementById('quiz-result');
+      const rName = document.getElementById('result-name');
+      const rDesc = document.getElementById('result-desc');
+      const rLink = document.getElementById('result-link');
+      const btnReset = document.getElementById('btn-reset');
+
+      btnQuiz.addEventListener('click', () => {
+        const q1 = document.getElementById('q1').value;
+        const q2 = document.getElementById('q2').value;
+        const q3 = document.getElementById('q3').value;
+
+        let res = null;
+        
+        if (dynamicQuizLogic && typeof dynamicQuizLogic === 'function') {
+           res = dynamicQuizLogic(q1, q2, q3);
+        } else {
+           res = { name: 'Northgate', desc: 'An up and coming area perfectly suited for your profile!' };
+
+           if(q1 === 'schools' || q3 === 'family') {
+             res = {name: 'Greenview', desc: 'The best schools in the city with ample park space for the family.'};
+           } else if(q1 === 'nightlife' || q3 === 'me') {
+             res = {name: 'Downtown Core', desc: 'Right in the center of the action. Walk everywhere, enjoy the energy.'};
+           } else if(q1 === 'space' && q3 === 'couple') {
+             res = {name: 'Heritage Hill', desc: 'Beautiful historic plots with the modern space you need to grow.'};
+           } else if(q1 === 'commute') {
+             res = {name: 'Riverside', desc: 'Perfectly positioned for easy transit access while offering calming river views.'};
+           } else if (q3 === 'retirees') {
+             res = {name: 'Lakeside', desc: 'Serene, flat, walkable paths right by the water makes this a relaxing haven.'};
+           }
+        }
+
+        rName.textContent = res.name;
+        rDesc.textContent = res.desc;
+        rLink.href = 'contact.html?interest=' + encodeURIComponent('Consultation for ' + res.name);
+        rLink.textContent = "Let's Talk About " + res.name + " \u2192";
+
+        form.classList.add('hidden');
+        resultDiv.classList.remove('hidden');
+        resultDiv.classList.add('animate-[bounce-in_0.5s]');
+      });
+
+      btnReset.addEventListener('click', () => {
+        resultDiv.classList.add('hidden');
+        form.classList.remove('hidden');
+      });
+    });
+
+    window.addEventListener('agentLoaded', (e) => {
+      const data = e.detail || {};
+
+      // Render Neighborhood cards
+      if (data.community_neighborhoods && Array.isArray(data.community_neighborhoods)) {
+          const cardsContainer = document.getElementById('dynamic-neighborhood-cards');
+          if(cardsContainer) {
+            cardsContainer.innerHTML = data.community_neighborhoods.map((n, i) => `
+              <div class="bg-white border border-mist overflow-hidden group hover:-translate-y-[6px] hover:shadow-xl transition-all duration-300 fade-up opacity-100 translate-y-0" style="transition-delay: ${0.05 * (i%3)}s">
+                <div class="h-[200px] overflow-hidden"><img src="${n.image_url}" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300"></div>
+                <div class="p-6">
+                  <h3 class="font-display text-2xl font-bold text-navy mb-1">${n.name}</h3>
+                  <p class="text-navy/70 italic mb-4">"${n.tagline}"</p>
+                  <div class="mb-4 text-sm text-navy/80 space-y-1">
+                    <p><strong>Avg Price:</strong> ${n.avg_price}</p>
+                    <p><strong>Walk Score:</strong> ${n.walk_score}</p>
+                    <p><strong>Schools:</strong> ${n.schools_rating}</p>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    ${n.tags.map(t => `<span class="text-xs border border-mocha text-mocha px-2 py-1 rounded">${t}</span>`).join('')}
+                  </div>
+                  <a href="listings.html?n=${encodeURIComponent(n.name)}" class="text-mocha font-medium hover:text-gold block group-hover:translate-x-1 transition-all">Explore ${n.name} &rarr;</a>
+                </div>
+              </div>
+            `).join('');
+          }
+      }
+
+      // Render Comparison Table rows
+      if (data.community_comparison && Array.isArray(data.community_comparison)) {
+          const tBody = document.getElementById('dynamic-comparison-table');
+          if(tBody) {
+             tBody.innerHTML = data.community_comparison.map((c, i) => `
+              <tr class="${i%2===0 ? 'bg-ivory hover:bg-cream' : 'bg-white hover:bg-cream'}">
+                <td class="p-4 font-bold font-display text-base relative">${c.name} ${c.best_value ? '<span class="absolute -top-1 ml-2 text-[0.6rem] bg-navy text-white px-2 rounded-full hidden sm:inline-block tracking-widest">BEST VALUE</span>' : ''}</td>
+                <td class="p-4 ${c.highlight_price ? 'font-bold text-mocha' : ''}">${c.avg_price}</td>
+                <td class="p-4">${c.avg_rent}</td>
+                <td class="p-4 ${c.highlight_walk ? 'text-gold font-bold' : ''}">${c.walk_score}</td>
+                <td class="p-4 ${c.highlight_school ? 'text-navy font-bold' : ''}">${c.schools_rating}</td>
+                <td class="p-4">${c.commute}</td>
+                <td class="p-4">${c.best_for}</td>
+              </tr>
+             `).join('');
+          }
+      }
+
+      // Update Quiz Options via JSON
+      if (data.quiz_logic && typeof window !== 'undefined') {
+          // If the payload provides custom logic function via a string or custom mapping
+          // (Simplified pattern: assuming user builds array mapping in re-client)
+          if(data.quiz_logic.options_q1) {
+             document.getElementById('q1').innerHTML = data.quiz_logic.options_q1.map(o => `<option value="${o.val}">${o.label}</option>`).join('');
+          }
+          if(data.quiz_logic.options_q2) {
+             document.getElementById('q2').innerHTML = data.quiz_logic.options_q2.map(o => `<option value="${o.val}">${o.label}</option>`).join('');
+          }
+          if(data.quiz_logic.options_q3) {
+             document.getElementById('q3').innerHTML = data.quiz_logic.options_q3.map(o => `<option value="${o.val}">${o.label}</option>`).join('');
+          }
+
+          if (data.quiz_evaluator) {
+             dynamicQuizLogic = new Function('q1', 'q2', 'q3', data.quiz_evaluator);
+          }
+      }
+    });
+  </script>
+  <style>
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes bounce-in {
+      0% { transform: scale(0.9); opacity: 0; }
+      50% { transform: scale(1.02); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+
+</body>
+</html>
