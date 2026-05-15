@@ -21,22 +21,24 @@ async function loadClient() {
   const data = await res.json();
   if (!data.length) { console.warn('No client found:', slug); return null; }
   const record = data[0];
-  return { ...record, ...(record.custom_data || {}) };
+  const merged = { ...record, ...(record.custom_data || {}) };
+  console.log('Client data loaded:', merged);
+  return merged;
 }
 
 function applyClient(c) {
-  if (!c) return;
+  if (!c) { console.warn('No client data to apply.'); return; }
   document.querySelectorAll('[data-c]').forEach(el => {
     const key = el.getAttribute('data-c');
-    if (c[key] !== undefined) el.textContent = c[key];
+    if (c[key] !== undefined && c[key] !== null) el.textContent = c[key];
   });
   document.querySelectorAll('[data-c-href]').forEach(el => {
     const key = el.getAttribute('data-c-href');
-    if (c[key] !== undefined) el.href = c[key];
+    if (c[key] !== undefined && c[key] !== null) el.href = c[key];
   });
   document.querySelectorAll('[data-c-src]').forEach(el => {
     const key = el.getAttribute('data-c-src');
-    if (c[key] !== undefined) el.src = c[key];
+    if (c[key] !== undefined && c[key] !== null) el.src = c[key];
   });
   if (c.studio_name) {
     document.title = document.title.replace('{{studio_name}}', c.studio_name);
