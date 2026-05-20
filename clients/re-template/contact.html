@@ -1,427 +1,182 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title data-a="page_title">Contact | Arjun Real Estate</title>
-  <script src="../../re-client.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Agent</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: { extend: {
-        colors: {
-          mocha:'var(--brand-mocha, #6B4C3B)', 
-          navy:'var(--brand-navy, #0F172A)',
-          ivory:'var(--brand-ivory, #FEFCE8)', 
-          gold:'var(--brand-gold, #C5A880)',
-          cream:'var(--brand-cream, #F5F0E8)', 
-          mist:'var(--brand-mist, #E8E2D9)'
-        },
-        fontFamily: {
-          display:['"Playfair Display"','serif'],
-          body:['"Inter Tight"','sans-serif']
-        }
-      }}
-    }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
-<body class="font-body bg-ivory text-navy antialiased">
-  
-  <nav class="sticky top-0 z-50 bg-ivory/95 border-b border-mist shadow-sm transition-all duration-300">
-    <div class="max-w-[1200px] mx-auto px-4 md:px-8 lg:px-20 h-20 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 group">
-        <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🏡</span>
-        <div class="flex flex-col leading-tight">
-          <span class="font-display font-bold text-mocha text-lg group-hover:text-navy transition-colors duration-200" data-a="agent_name">Arjun Mehta</span>
-          <span class="text-[10px] tracking-widest uppercase font-semibold opacity-70 text-navy" data-a="agent_city_tagline">Mumbai Real Estate</span>
-        </div>
-      </a>
-      <div class="hidden md:flex gap-8 items-center text-sm font-medium">
-        <a href="index.html" class="hover:text-mocha transition-colors nav-link ">Home</a>
-        <a href="communities.html" class="hover:text-mocha transition-colors nav-link">Communities</a>
-        <a href="listings.html" class="hover:text-mocha transition-colors nav-link">Listings</a>
-        <a href="selling.html" class="hover:text-mocha transition-colors nav-link">Selling</a>
-        <a href="success-stories.html" class="hover:text-mocha transition-colors nav-link">Success Stories</a>
-        <a href="contact.html" class="hover:text-mocha transition-colors nav-link text-mocha border-b-2 border-gold pb-1">Contact</a>
-      </div>
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-navy hover:text-mocha focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-ivory border-t border-mist px-4 py-4 space-y-4 shadow-lg absolute w-full z-40">
-      <a href="index.html" class="block font-medium hover:text-mocha transition-colors nav-link ">Home</a>
-      <a href="communities.html" class="block font-medium hover:text-mocha transition-colors nav-link">Communities</a>
-      <a href="listings.html" class="block font-medium hover:text-mocha transition-colors nav-link">Listings</a>
-      <a href="selling.html" class="block font-medium hover:text-mocha transition-colors nav-link">Selling</a>
-      <a href="success-stories.html" class="block font-medium hover:text-mocha transition-colors nav-link">Success Stories</a>
-      <a href="contact.html" class="block font-medium text-mocha nav-link">Contact</a>
-    </div>
-  </nav>
-
-  <main>
-    <section class="relative w-full h-[40vh] min-h-[300px] flex items-center justify-center text-center overflow-hidden">
-      <div class="absolute inset-0 z-0">
-        <img data-a-src="contact_hero_image" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=1400&q=80" alt="Contact Hero" loading="lazy" class="w-full h-full object-cover origin-top">
-        <div class="absolute inset-0 bg-gradient-to-r from-navy/70 to-mocha/50 z-10"></div>
-      </div>
-      <div class="relative z-20 max-w-2xl px-4 mx-auto text-white">
-        <span class="text-gold uppercase tracking-[0.2em] text-[10px] font-bold mb-4 fade-up block">BOOK A CONSULTATION</span>
-        <h1 class="font-display font-bold text-4xl md:text-5xl mb-4 fade-up" style="transition-delay: 0.05s">Let's Start Your Journey</h1>
-        <p class="text-white/90 font-light text-lg md:text-xl fade-up max-w-lg mx-auto" style="transition-delay: 0.1s">
-          No pressure. No jargon. Just an honest conversation about your goals.
-        </p>
-      </div>
-    </section>
-
-    <section class="py-16 md:py-24 px-4 md:px-8 lg:px-20 max-w-[1200px] mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-        
-        <!-- Info Cards (Left) -->
-        <div class="space-y-4">
-          <a data-a-href="office_maps_link" href="https://maps.google.com" target="_blank" class="flex gap-4 p-4 bg-white shadow-sm hover:-translate-y-1 transition-transform border border-mist block fade-up group">
-            <span class="text-2xl mt-1 group-hover:scale-110 transition-transform text-mocha inline-block filter sepia saturate-200 hue-rotate-340">📍</span>
-            <div>
-              <p class="font-bold text-navy">Office Address</p>
-              <p class="text-navy/70 text-sm mt-1 whitespace-pre-line" data-a="office_address">Ground Floor, Arjun Chambers,<br>MG Road, Mumbai – 400001</p>
-            </div>
-          </a>
-          <a data-a-href="office_phone_link" href="tel:+919876543210" class="flex gap-4 p-4 bg-white shadow-sm hover:-translate-y-1 transition-transform border border-mist block fade-up group" style="transition-delay: 0.05s">
-            <span class="text-2xl mt-1 group-hover:scale-110 transition-transform text-mocha inline-block filter sepia saturate-200 hue-rotate-340">📞</span>
-            <div>
-              <p class="font-bold text-navy">Direct Line</p>
-              <p class="text-navy/70 text-sm mt-1" data-a="office_phone">+91 98765 43210</p>
-            </div>
-          </a>
-          <a data-a-href="office_email_link" href="mailto:hello@arjunrealty.com" class="flex gap-4 p-4 bg-white shadow-sm hover:-translate-y-1 transition-transform border border-mist block fade-up group" style="transition-delay: 0.1s">
-            <span class="text-2xl mt-1 group-hover:scale-110 transition-transform text-mocha inline-block filter sepia saturate-200 hue-rotate-340">✉️</span>
-            <div>
-              <p class="font-bold text-navy">Email Us</p>
-              <p class="text-navy/70 text-sm mt-1" data-a="office_email">hello@arjunrealty.com</p>
-            </div>
-          </a>
-          <div class="flex gap-4 p-4 bg-white shadow-sm hover:-translate-y-1 transition-transform border border-mist block fade-up group" style="transition-delay: 0.15s">
-            <span class="text-2xl mt-1 group-hover:scale-110 transition-transform text-mocha inline-block filter sepia saturate-200 hue-rotate-340">🕐</span>
-            <div>
-              <p class="font-bold text-navy">Hours</p>
-              <p class="text-navy/70 text-sm mt-1 whitespace-pre-line" data-a="office_hours">Mon–Sat: 9am–7pm<br>Sun: By appointment</p>
-            </div>
-          </div>
-          <div class="p-4 bg-white shadow-sm border border-mist fade-up relative overflow-hidden group" style="transition-delay: 0.2s">
-            <img data-a-src="map_thumbnail" src="https://images.unsplash.com/photo-1577086664693-894d8405334a?w=600&q=80" loading="lazy" class="h-[140px] w-full object-cover group-hover:scale-[1.04] transition-transform duration-300">
-            <a data-a-href="office_maps_link" href="https://maps.google.com" target="_blank" class="absolute inset-0 flex items-center justify-center bg-navy/40 opacity-0 group-hover:opacity-100 transition-opacity">
-              <span class="bg-gold text-navy font-medium px-4 py-2 rounded">Get Directions &rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Booking Form (Right) -->
-        <div class="bg-cream shadow-lg p-6 md:p-8 lg:p-10 border border-mist fade-up relative" id="form-container">
-          <h3 class="font-display font-bold text-2xl text-navy mb-2">Book a Free Consultation</h3>
-          <p class="text-navy/70 text-sm mb-6">Fill in your details. We'll confirm within 2 hours.</p>
-          
-          <form id="contact-form" class="space-y-5">
-            <div>
-              <input type="text" id="f-name" placeholder="Full Name" required minlength="2" class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy placeholder:text-navy/40">
-              <p class="error-msg text-red-500 text-xs mt-1 hidden">Please enter your full name.</p>
-            </div>
-            <div>
-              <input type="tel" id="f-phone" placeholder="Phone (10 digits)" required pattern="[0-9]{10}" class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy placeholder:text-navy/40">
-              <p class="error-msg text-red-500 text-xs mt-1 hidden">Please enter a valid 10-digit number.</p>
-            </div>
-            <div>
-              <input type="email" id="f-email" placeholder="Email Address" required class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy placeholder:text-navy/40">
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <select id="f-interest" required class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy">
-                <option value="">Interest ▼</option>
-                <option value="Buy">Buy</option>
-                <option value="Sell">Sell</option>
-                <option value="Invest">Invest</option>
-                <option value="Just Exploring">Just Exploring</option>
-              </select>
-              <select id="dynamic-budget-options" required class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy">
-                <option value="">Budget ▼</option>
-                <option value="Under ₹75L">Under ₹75L</option>
-                <option value="₹75L-1Cr">₹75L-1Cr</option>
-                <option value="₹1-2Cr">₹1-2Cr</option>
-                <option value="₹2-3Cr">₹2-3Cr</option>
-                <option value="₹3Cr+">₹3Cr+</option>
-                <option value="Not Sure">Not Sure</option>
-              </select>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="relative w-full"><div class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-navy/40 text-sm hidden" id="f-date-ph">Select Date</div><input type="date" id="f-date" required class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy" onclick="this.showPicker()"></div>
-              <select id="f-time" required class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy">
-                <option value="">Time ▼</option>
-                <option value="9 AM">9 AM</option>
-                <option value="10 AM">10 AM</option>
-                <option value="11 AM">11 AM</option>
-                <option value="12 PM">12 PM</option>
-                <option value="1 PM">1 PM</option>
-                <option value="2 PM">2 PM</option>
-                <option value="3 PM">3 PM</option>
-                <option value="4 PM">4 PM</option>
-                <option value="5 PM">5 PM</option>
-                <option value="6 PM">6 PM</option>
-              </select>
-            </div>
-            <div>
-              <textarea id="f-msg" placeholder="Message (Optional)" maxlength="400" rows="3" class="w-full bg-white border border-mist rounded outline-none p-3 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm transition-all text-navy placeholder:text-navy/40"></textarea>
-            </div>
-            <button type="submit" id="submit-btn" class="w-full bg-gold text-navy font-bold h-[52px] rounded hover:scale-[1.02] shadow-sm transition-all duration-200 disabled:bg-mist disabled:text-navy/50 disabled:cursor-not-allowed disabled:-hover:translate-y-0">Confirm My Consultation</button>
-          </form>
-
-          <div id="success-screen" class="hidden flex flex-col justify-center items-center py-4 text-center">
-            <div class="text-5xl mb-4 animate-[bounce-in_0.5s]">✅</div>
-            <h2 class="text-[2rem] font-display font-bold text-navy mb-2">You're Booked!</h2>
-            <p class="text-navy/70 text-sm mb-6">We'll call you at <span id="r-phone" class="font-bold"></span>.</p>
-            
-            <div class="bg-white border border-mist p-4 w-full mb-6 text-left shadow-sm">
-              <p class="text-sm text-navy/70"><strong class="text-navy inline-block w-20">Name:</strong> <span id="r-name"></span></p>
-              <p class="text-sm text-navy/70"><strong class="text-navy inline-block w-20">Interest:</strong> <span id="r-interest"></span></p>
-              <p class="text-sm text-navy/70"><strong class="text-navy inline-block w-20">Date:</strong> <span id="r-date"></span></p>
-              <p class="text-sm text-navy/70"><strong class="text-navy inline-block w-20">Time:</strong> <span id="r-time"></span></p>
-            </div>
-
-            <div id="dynamic-upi-qr" class="text-center w-full">
-               <p class="text-navy font-bold text-sm mb-2">Scan & Pay <span data-a="consultation_fee">₹500</span> to confirm consultation:</p>
-               <div class="bg-white p-3 border border-mist shadow-sm mb-6 inline-block">
-                 <img data-a-src="upi_qr_code" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=arjunmehta@upi&pn=ArjunMehta&am=500.00&cu=INR" alt="QR Code" class="w-[150px] h-[150px] object-contain mx-auto">
-               </div>
-            </div>
-
-            <a id="wa-share" href="#" target="_blank" class="block w-full bg-[#25d366] text-white font-bold h-[48px] leading-[48px] rounded hover:scale-[1.02] transition-transform mb-4">📱 Share Details & Payment SS</a>
-            <div class="flex justify-between w-full">
-              <a href="index.html" class="text-sm text-mocha font-medium hover:underline">&larr; Back to Home</a>
-              <button id="reset-form" class="text-sm text-navy/50 hover:underline">Book Another</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- FAQ Accordion -->
-    <section class="bg-ivory py-16 md:py-24 px-4">
-      <div class="max-w-[800px] mx-auto fade-up">
-        <h2 class="text-3xl md:text-[2.5rem] font-display font-bold text-navy text-center mb-10">Before We Talk</h2>
-        <div class="space-y-4" id="faq-container">
-          <!-- Q1 -->
-          <div class="faq-item border border-mist  overflow-hidden bg-white transition-colors duration-300">
-            <button class="faq-btn w-full text-left p-6 flex justify-between items-center focus:outline-none">
-              <span class="font-bold text-navy pr-4">Is the consultation really free?</span>
-              <span class="faq-icon text-mocha text-2xl transition-transform duration-300">+</span>
-            </button>
-            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-              <p class="p-6 pt-0 text-navy/70 text-[0.95rem] leading-relaxed">Yes. No fees, no obligation. Just an honest conversation about your options and our process. (Unless you book a paid expert session)</p>
-            </div>
-          </div>
-          <!-- Q2 -->
-          <div class="faq-item border border-mist overflow-hidden bg-white transition-colors duration-300">
-            <button class="faq-btn w-full text-left p-6 flex justify-between items-center focus:outline-none">
-              <span class="font-bold text-navy pr-4">How quickly do you respond?</span>
-              <span class="faq-icon text-mocha text-2xl transition-transform duration-300">+</span>
-            </button>
-            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-              <p class="p-6 pt-0 text-navy/70 text-[0.95rem] leading-relaxed">Within 2 hours on business days. If it's urgent, feel free to use the WhatsApp button to reach out directly.</p>
-            </div>
-          </div>
-          <!-- Q3 -->
-          <div class="faq-item border border-mist  overflow-hidden bg-white transition-colors duration-300">
-            <button class="faq-btn w-full text-left p-6 flex justify-between items-center focus:outline-none">
-              <span class="font-bold text-navy pr-4">Do you work with first-time buyers?</span>
-              <span class="faq-icon text-mocha text-2xl transition-transform duration-300">+</span>
-            </button>
-            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-              <p class="p-6 pt-0 text-navy/70 text-[0.95rem] leading-relaxed">Absolutely. We make the entire process clear, calm, and jargon-free so you feel confident at every step.</p>
-            </div>
-          </div>
-          <!-- Q5 -->
-          <div class="faq-item border border-mist  overflow-hidden bg-white transition-colors duration-300">
-            <button class="faq-btn w-full text-left p-6 flex justify-between items-center focus:outline-none">
-              <span class="font-bold text-navy pr-4">What areas do you cover?</span>
-              <span class="faq-icon text-mocha text-2xl transition-transform duration-300">+</span>
-            </button>
-            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-              <p class="p-6 pt-0 text-navy/70 text-[0.95rem] leading-relaxed" data-a="faq_coverage_answer">All of Mumbai, with secondary coverage for select luxury properties in the nearby districts.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <a data-a-href="whatsapp_link" href="https://wa.me/919876543210" target="_blank" class="fixed bottom-6 right-6 w-[60px] h-[60px] bg-[#25d366] rounded-full flex items-center justify-center shadow-lg z-40 hover:scale-[1.05] transition-transform duration-200 animate-[pulse_3s_infinite]">
-    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.567-10.563 5.824 0 10.561 4.741 10.562 10.563s-4.739 10.564-10.562 10.564z"/></svg>
-  </a>
-
-  <footer class="h-12 bg-navy text-white/50 px-4 md:px-10 flex items-center justify-between text-[10px] uppercase tracking-widest mt-auto">
-    <p data-a="footer_copyright">&copy; 2025 Arjun Mehta Realty | All Rights Reserved</p>
-    <div class="flex gap-6">
-      <a data-a-href="relocation_guide_link" href="contact.html" class="hover:text-gold transition-colors">Relocation Guide</a>
-      <a data-a-href="privacy_link" href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
-      <a data-a-href="terms_link" href="#" class="hover:text-gold transition-colors">Terms</a>
-    </div>
-  </footer>
-
-  <script>
-    const mBtn = document.getElementById('mobile-menu-btn');
-    const mMenu = document.getElementById('mobile-menu');
-    if(mBtn && mMenu) mBtn.addEventListener('click', () => mMenu.classList.toggle('hidden'));
-
-    let dynamicWhatsAppNumber = '919876543210';
-    let dynamicAgentName = 'Arjun';
-
-    window.addEventListener('agentLoaded', (e) => {
-        const data = e.detail || {};
-        
-        if (data.whatsapp_number) dynamicWhatsAppNumber = data.whatsapp_number.replace(/\D/g,'');
-        if (data.agent_first_name) dynamicAgentName = data.agent_first_name;
-
-        // Custom budget options
-        if (data.budget_options && Array.isArray(data.budget_options)) {
-            const bForm = document.getElementById('dynamic-budget-options');
-            if (bForm) {
-                bForm.innerHTML = '<option value="">Budget ▼</option>' + data.budget_options.map(o => `<option value="${o.val}">${o.label}</option>`).join('');
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0F172A',
+              mocha: '#6B4C3B',
+              gold: '#C5A880',
+              ivory: '#FEFCE8'
             }
-        }
-        
-        // Hide UPI portion if fee is 0 or unprovided
-        if (data.consultation_fee === '0' || !data.upi_qr_code) {
-           const qrDiv = document.getElementById('dynamic-upi-qr');
-           if (qrDiv) qrDiv.style.display = 'none';
-        }
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-      // Intersection Observer
-      const obs = new IntersectionObserver(e => {
-        e.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add('opacity-100','translate-y-0');
-            entry.target.classList.remove('opacity-0','translate-y-4');
-            obs.unobserve(entry.target);
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body: ['"Inter Tight"', 'sans-serif'],
           }
-        });
-      }, {threshold: 0.15});
-      document.querySelectorAll('.fade-up').forEach(el => {
-        el.classList.add('opacity-0','translate-y-4','transition-all','duration-300');
-        obs.observe(el);
-      });
-
-      // Set Date min
-      const dateInput = document.getElementById('f-date');
-      const today = new Date().toISOString().split('T')[0];
-      dateInput.min = today;
-
-      const urlParams = new URLSearchParams(window.location.search);
-      const interest = urlParams.get('interest');
-      if(interest) {
-        document.getElementById('f-interest').innerHTML += `<option value="${interest}" selected>${interest}</option>`;
+        }
       }
-
-      const inputs = document.querySelectorAll('input, select');
-      inputs.forEach(i => {
-        i.addEventListener('input', () => {
-          const err = i.nextElementSibling;
-          if(err && err.classList.contains('error-msg')) err.classList.add('hidden');
-        });
-      });
-
-      const dtp = document.getElementById('f-date');
-      const dtph = document.getElementById('f-date-ph');
-      if (dtp && dtph) {
-          if (!dtp.value) dtph.classList.remove('hidden');
-          dtp.addEventListener('change', () => { if(dtp.value) dtph.classList.add('hidden'); else dtph.classList.remove('hidden'); });
-          dtp.addEventListener('focus', () => dtph.classList.add('hidden'));
-          dtp.addEventListener('blur', () => { if(!dtp.value) dtph.classList.remove('hidden'); });
-      }
-      
-      const frm = document.getElementById('contact-form');
-      const succ = document.getElementById('success-screen');
-      const reset = document.getElementById('reset-form');
-
-      frm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        let valid = true;
-        const nameInput = document.getElementById('f-name');
-        const phoneInput = document.getElementById('f-phone');
-
-        if(nameInput.value.length < 2) {
-          nameInput.nextElementSibling.classList.remove('hidden');
-          valid = false;
-        }
-        if(!/^\d{10}$/.test(phoneInput.value)) {
-          phoneInput.nextElementSibling.classList.remove('hidden');
-          valid = false;
-        }
-
-        if(valid) {
-          const n = nameInput.value;
-          const p = phoneInput.value;
-          const i = document.getElementById('f-interest').value;
-          const d = document.getElementById('f-date').value;
-          const t = document.getElementById('f-time').value;
-
-          document.getElementById('r-name').textContent = n;
-          document.getElementById('r-phone').textContent = p;
-          document.getElementById('r-interest').textContent = i;
-          document.getElementById('r-date').textContent = d;
-          document.getElementById('r-time').textContent = t;
-
-          const waUrl = `https://wa.me/${dynamicWhatsAppNumber}?text=${encodeURIComponent(`Hi ${dynamicAgentName} I have booked a consultation. Name:${n} Phone:${p} Interest:${i} Date:${d} Time:${t}`)}`;
-          document.getElementById('wa-share').href = waUrl;
-
-          frm.style.display = 'none';
-          document.querySelector('h3.font-display').style.display = 'none';
-          document.querySelector('#form-container > p').style.display = 'none';
-          succ.classList.remove('hidden');
-          succ.classList.add('flex');
-        }
-      });
-
-      reset.addEventListener('click', () => {
-        frm.reset();
-        succ.classList.add('hidden');
-        succ.classList.remove('flex');
-        frm.style.display = 'block';
-        document.querySelector('h3.font-display').style.display = 'block';
-        document.querySelector('#form-container > p').style.display = 'block';
-        setTimeout(() => frm.style.opacity = '1', 50);
-      });
-
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems.forEach(item => {
-        const btn = item.querySelector('.faq-btn');
-        const content = item.querySelector('.faq-content');
-        const icon = item.querySelector('.faq-icon');
-
-        btn.addEventListener('click', () => {
-          const isOpen = item.classList.contains('open');
-
-          faqItems.forEach(other => {
-            other.classList.remove('open', 'bg-cream');
-            other.querySelector('.faq-content').style.maxHeight = null;
-            other.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
-          });
-
-          if(!isOpen) {
-            item.classList.add('open', 'bg-cream');
-            content.style.maxHeight = content.scrollHeight + 'px';
-            icon.style.transform = 'rotate(45deg)';
-          }
-        });
-      });
-    });
+    }
   </script>
   <style>
-    @keyframes bounce-in {
-      0% { transform: scale(0.9); opacity: 0; }
-      50% { transform: scale(1.05); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+    body { font-family: 'Inter Tight', sans-serif; background-color: #0F172A; color: #FEFCE8; }
+    h1, h2, h3, h4, .font-display { font-family: 'Playfair Display', serif; }
+    html { scroll-behavior: smooth; }
+    .border-gold { border-color: rgba(197, 168, 128, 0.3); }
+    .bg-mocha { background-color: #6B4C3B; }
+    .text-gold { color: #C5A880; }
+    .bg-dark { background-color: #0a101f; }
   </style>
+  
+<script>
+const AGENT = {
+  // IDENTITY
+  agent_name: "Arjun Mehta",
+  agent_firstname: "Arjun",
+  city: "Mumbai",
+  city_tagline: "Mumbai Real Estate",
+  tagline: "Mumbai's Top 1% Agent",
+  established: "2013",
+
+  // CONTACT
+  phone: "+91 98765 43210",
+  whatsapp_number: "919876543210",
+  whatsapp_message: "Hi Arjun, I am interested in a property consultation",
+  email: "hello@arjunrealty.com",
+  office_address: "Ground Floor, Arjun Chambers, MG Road,",
+  office_city: "Mumbai - 400001",
+  office_hours: "Mon-Sat: 9am-7pm",
+  maps_link: "https://maps.google.com",
+  upi_id: "arjunmehta@upi",
+  consultation_fee: "500",
+
+  // HERO
+  hero_image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80",
+  hero_headline: "Your Trusted Guide to Mumbai's Finest Properties",
+  hero_subtext: "Boutique service. Exceptional results. Your next home begins here.",
+  trust_badge: "4.9★ | 120+ Families Served | Mumbai's Top 1% Agent",
+
+  // AGENT PROFILE
+  agent_photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+  agent_bio: "A decade of local experience dedicated to honest advice and exceptional results.",
+  credentials: "12 Yrs | #1 in Mumbai 2024 | 4.9★",
+
+  // STATS
+  stat_sale_ratio: "94%",
+  stat_above_asking: "₹12L",
+  stat_days: "18",
+  stat_sales: "120+",
+  private_network: "800+",
+
+  // MARKET DATA
+  market_median: "₹2.4Cr",
+  market_days: "18 Days",
+  market_listings: "143",
+  market_updated: "Updated May 2025",
+
+  // PROPERTIES
+  properties: [
+    {label:"JUST LISTED", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", price:"₹1.85Cr", address:"124 Riverside Lane", neighborhood:"Riverside", type:"House", beds:"3", baths:"2", sqft:"1,800", desc:"A stunning riverside property with modern finishes and serene garden."},
+    {label:"FOR SALE", image:"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80", price:"₹2.10Cr", address:"88 Heritage Avenue", neighborhood:"Heritage Hill", type:"Condo", beds:"2", baths:"2", sqft:"1,450", desc:"Classic charm combined with modern amenities in heritage condo."},
+    {label:"UNDER OFFER", image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80", price:"₹4.50Cr", address:"5 Downtown Boulevard", neighborhood:"Downtown Core", type:"House", beds:"4", baths:"4", sqft:"3,200", desc:"Luxurious downtown retreat with panoramic skyline views."},
+    {label:"FOR SALE", image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", price:"₹95L", address:"32B City Center Plaza", neighborhood:"Downtown Core", type:"Condo", beds:"1", baths:"1", sqft:"750", desc:"Perfect starter home or investment property in city center."},
+    {label:"JUST LISTED", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", price:"₹2.75Cr", address:"44 Riverfront Walk", neighborhood:"Riverside", type:"Townhouse", beds:"3", baths:"3", sqft:"2,200", desc:"Spacious townhouse with private balconies and river trail access."},
+    {label:"FOR SALE", image:"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80", price:"₹3.80Cr", address:"112 Victoria Lane", neighborhood:"Heritage Hill", type:"House", beds:"4", baths:"3", sqft:"2,800", desc:"Magnificent detached home with original woodwork and gardens."}
+  ],
+
+  // COMMUNITIES
+  communities: [
+    {name:"Downtown Core", tagline:"The heartbeat of city life.", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", avg_price:"₹3.2Cr", walk_score:"98/100", schools:"7/10", tags:["Nightlife","Near Metro","Condos"]},
+    {name:"Riverside", tagline:"Serene mornings. Vibrant weekends.", image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", avg_price:"₹2.8Cr", walk_score:"85/100", schools:"8/10", tags:["Family-Friendly","Nature Trails"]},
+    {name:"Heritage Hill", tagline:"Old-world charm. New-world comfort.", image:"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80", avg_price:"₹4.1Cr", walk_score:"70/100", schools:"9/10", tags:["Historic","Large Plots"]},
+    {name:"Greenview", tagline:"Space, parks, and top schools.", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", avg_price:"₹2.2Cr", walk_score:"60/100", schools:"10/10", tags:["Top Schools","Gated"]},
+    {name:"Lakeside", tagline:"Waterfront living at its finest.", image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80", avg_price:"₹3.5Cr", walk_score:"75/100", schools:"8/10", tags:["Views","Luxury"]},
+    {name:"Northgate", tagline:"The emerging address everyone's watching.", image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", avg_price:"₹1.5Cr", walk_score:"80/100", schools:"6/10", tags:["Investment","New Dev"]}
+  ],
+
+  // TESTIMONIALS
+  testimonials: [
+    {initials:"RS", name:"Rohan & Simran", detail:"Bought in Lakeside", text:"We closed in 28 days, ₹12L under budget. Arjun simplified everything."},
+    {initials:"KM", name:"Kavya M.", detail:"Sold in Heritage Hill", text:"Sold in 11 days at 8% above asking. Absolutely brilliant strategy."},
+    {initials:"AS", name:"Ankit S.", detail:"Relocated to Mumbai", text:"Felt like a trusted local friend throughout the entire process."},
+    {initials:"DP", name:"Deepak P.", detail:"Sold in Bandra West", text:"Arjun's marketing strategy was unmatched. Multiple offers received."},
+    {initials:"MJ", name:"Meera J.", detail:"Bought in South Mumbai", text:"Bought my first luxury apartment with ease. 100% transparency."},
+    {initials:"VN", name:"Varun & Neha", detail:"Bought in Bandra", text:"Always reachable, clearly laid out our options. True professional!"}
+  ],
+
+  // SELLER TESTIMONIALS
+  seller_testimonials: [
+    {initials:"MP", name:"Meera P.", detail:"Sold 4BHK in Greenview", text:"Sold in 11 days, ₹18L above asking. The pricing strategy was genius."},
+    {initials:"VT", name:"Vikram T.", detail:"Sold Villa in Heritage Hill", text:"Stress-free from start to finish. The staging transformed our home."}
+  ],
+
+  // NEIGHBORHOODS FOR SEARCH
+  neighborhoods: ["Downtown Core", "Riverside", "Heritage Hill", "Greenview", "Lakeside", "Northgate"],
+
+  // FAQ
+  coverage_area: "All of Mumbai, with secondary coverage for select luxury properties in nearby districts."
+};
+
+document.title = AGENT.agent_name + ' | ' + AGENT.city_tagline;
+
+function renderCommon() {
+  const commonNav = '<nav class="bg-[#0F172A] text-[#FEFCE8] sticky top-0 z-50 border-b border-gold shrink-0"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between h-20 items-center"><div class="flex-shrink-0 flex flex-col justify-center"><a href="index.html" class="font-display text-2xl font-bold tracking-wider text-gold leading-none">' + AGENT.agent_name + '</a><span class="text-[10px] uppercase tracking-widest text-[#FEFCE8]/60 mt-1 leading-none">' + AGENT.city_tagline + '</span></div><div class="hidden md:flex space-x-8 items-center"><a href="index.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Home</a><a href="listings.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Properties</a><a href="selling.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Selling</a><a href="communities.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Communities</a><a href="success-stories.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Success Stories</a><a href="contact.html" class="bg-[#C5A880] text-[#0F172A] px-5 py-2 rounded-sm font-bold hover:bg-yellow-600 transition-colors uppercase tracking-wide text-xs">Consultation</a></div><div class="md:hidden flex items-center"><button id="mobile-menu-btn" class="text-white hover:text-gold focus:outline-none p-2"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button></div></div></div><div id="mobile-menu" class="hidden md:hidden bg-[#0F172A] pb-4 border-t border-gold"><a href="index.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Home</a><a href="listings.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Properties</a><a href="selling.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Selling</a><a href="communities.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Communities</a><a href="success-stories.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Success Stories</a><a href="contact.html" class="block px-4 py-3 text-sm text-gold font-bold transition-colors">Contact</a></div></nav>';
+
+  const commonFooter = '<footer class="bg-[#0F172A] text-[#FEFCE8] pt-16 pb-8 border-t border-gold mt-auto shrink-0"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12"><div class="col-span-1 md:col-span-2"><h2 class="font-display text-3xl font-bold text-gold mb-4">' + AGENT.agent_name + '</h2><p class="text-[#FEFCE8]/50 mb-6 max-w-sm line-clamp-3">' + AGENT.hero_subtext + '</p><p class="text-sm font-medium text-[#FEFCE8]/60">Est. ' + AGENT.established + '</p></div><div><h3 class="font-bold mb-4 uppercase tracking-wider text-sm text-gold">Navigation</h3><ul class="space-y-3 text-[#FEFCE8]/50 text-sm"><li><a href="listings.html" class="hover:text-white transition-colors">Properties</a></li><li><a href="selling.html" class="hover:text-white transition-colors">Selling</a></li><li><a href="communities.html" class="hover:text-white transition-colors">Communities</a></li><li><a href="success-stories.html" class="hover:text-white transition-colors">Success Stories</a></li><li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li></ul></div><div><h3 class="font-bold mb-4 uppercase tracking-wider text-sm text-gold">Contact</h3><ul class="space-y-3 text-[#FEFCE8]/50 text-sm"><li class="flex items-center gap-2"><svg class="w-4 h-4 text-gold opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>' + AGENT.phone + '</li><li class="flex items-center gap-2"><svg class="w-4 h-4 text-gold opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>' + AGENT.email + '</li><li class="flex items-start gap-2 mt-4"><svg class="w-5 h-5 text-gold opacity-70 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>' + AGENT.office_address + '<br/>' + AGENT.office_city + '</span></li><li class="pl-7 mt-1"><a href="' + AGENT.maps_link + '" target="_blank" class="text-gold hover:text-white transition-colors underline decoration-brand-gold/50 underline-offset-4 text-xs font-semibold">Get Directions</a></li></ul></div></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-gold text-center text-[#FEFCE8]/60 text-sm flex flex-col md:flex-row justify-between items-center gap-4"><span>&copy; ' + new Date().getFullYear() + ' ' + AGENT.agent_name + '. All rights reserved.</span><span class="text-xs">Built for Excellence in Real Estate</span></div></footer>';
+
+  const waUrl = 'https://wa.me/' + AGENT.whatsapp_number + '?text=' + encodeURIComponent(AGENT.whatsapp_message);
+  const floatingWA = '<a href="' + waUrl + '" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-none hover:bg-green-600 transition-transform hover:scale-110 z-50 flex items-center justify-center"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>';
+
+  document.body.insertAdjacentHTML('afterbegin', commonNav);
+  document.body.insertAdjacentHTML('beforeend', commonFooter);
+  document.body.insertAdjacentHTML('beforeend', floatingWA);
+
+  var btn = document.getElementById('mobile-menu-btn');
+  if (btn) {
+    btn.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded', renderCommon);
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+<main class="flex-grow w-full">
+<div id="page-contact"></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('page-contact');
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=' + AGENT.upi_id + '&pn=' + encodeURIComponent(AGENT.agent_name) + '&am=' + AGENT.consultation_fee + '.00&cu=INR';
+  
+  container.innerHTML = '<div class="bg-[#0F172A] text-white py-16 px-4 text-center"><h1 class="font-display text-5xl font-bold mb-4">Get in Touch</h1><p class="text-gold font-medium text-lg">We are here to answer your questions and guide you.</p></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"><div class="grid grid-cols-1 lg:grid-cols-12 gap-16"><div class="lg:col-span-4"><h2 class="font-display text-3xl font-bold text-[#FEFCE8] mb-8">Direct Contact</h2><div class="space-y-8"><div class="flex flex-col"><h4 class="font-bold text-[#FEFCE8] mb-1 uppercase tracking-wider text-xs">Phone & WhatsApp</h4><p class="text-[#FEFCE8]/80 font-medium text-lg">' + AGENT.phone + '</p></div><div class="flex flex-col"><h4 class="font-bold text-[#FEFCE8] mb-1 uppercase tracking-wider text-xs">Email</h4><p class="text-[#FEFCE8]/80 font-medium text-lg">' + AGENT.email + '</p></div><div class="flex flex-col"><h4 class="font-bold text-[#FEFCE8] mb-1 uppercase tracking-wider text-xs">Office Address</h4><p class="text-[#FEFCE8]/80 font-medium mb-1">' + AGENT.office_address + '<br/>' + AGENT.office_city + '</p><p class="text-xs font-bold text-gold uppercase tracking-widest mt-1">' + AGENT.office_hours + '</p></div></div><div class="mt-16 bg-dark p-8 border border-white/10 rounded-sm shadow-none"><h3 class="font-display text-xl font-bold text-[#FEFCE8] mb-6 border-b border-white/10 pb-4">FAQs</h3><div class="space-y-6"><div><h4 class="font-bold text-[#FEFCE8] mb-2">Coverage area?</h4><p class="text-sm text-[#FEFCE8]/70 leading-relaxed">' + AGENT.coverage_area + '</p></div><div><h4 class="font-bold text-[#FEFCE8] mb-2">Consultation fee?</h4><p class="text-sm text-[#FEFCE8]/70 leading-relaxed">There is a formal priority consultation fee of ₹' + AGENT.consultation_fee + ' via UPI which reserves exclusive time with ' + AGENT.agent_firstname + '.</p></div></div></div></div><div class="lg:col-span-8"><div id="booking-step1" class="bg-dark p-8 md:p-12 rounded-sm shadow-none border-t-4 border-gold"><span class="text-gold font-bold tracking-widest uppercase text-xs mb-2 block">Take the first step</span><h3 class="font-display text-4xl font-bold text-[#FEFCE8] mb-4">Book a Priority Consultation</h3><p class="text-[#FEFCE8]/60 mb-8 pb-8 border-b border-white/10 font-medium text-lg">Consultation Form Fee: <strong class="text-[#FEFCE8]">₹' + AGENT.consultation_fee + '</strong></p><form id="consult-form" onsubmit="event.preventDefault(); showPayment();"><div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"><div><label class="block text-xs font-bold text-[#FEFCE8] mb-2 uppercase tracking-widest">Full Name</label><input type="text" id="c-name" required class="w-full p-4 bg-white/5 border border-white/20 rounded-sm focus:border-gold focus:ring-1 focus:ring-brand-gold transition-all outline-none font-medium text-[#FEFCE8]/90 placeholder-[#FEFCE8]/40" placeholder="e.g. John Doe"></div><div><label class="block text-xs font-bold text-[#FEFCE8] mb-2 uppercase tracking-widest">Phone Number</label><input type="tel" id="c-phone" required class="w-full p-4 bg-white/5 border border-white/20 rounded-sm focus:border-gold focus:ring-1 focus:ring-brand-gold transition-all outline-none font-medium text-[#FEFCE8]/90 placeholder-[#FEFCE8]/40" placeholder="e.g. 98765 43210"></div></div><div class="mb-8"><label class="block text-xs font-bold text-[#FEFCE8] mb-2 uppercase tracking-widest">Topic of Interest</label><select id="c-topic" required class="w-full p-4 bg-white/5 border border-white/20 rounded-sm focus:border-gold focus:ring-1 focus:ring-brand-gold transition-all outline-none font-medium text-[#FEFCE8]/90 appearance-none"><option value="Buying a Home">Buying a Home</option><option value="Selling a Home">Selling a Home</option><option value="Investment Property">Investment Property</option><option value="General Inquiry">General Inquiry</option></select></div><button type="submit" class="w-full bg-[#0F172A] text-white text-lg py-5 font-bold tracking-wider hover:bg-white/10 transition-colors shadow-none rounded-sm uppercase">Proceed to Payment</button></form></div><div id="booking-step2" class="hidden bg-dark p-8 md:p-12 rounded-sm shadow-none border-t-4 border-white/10 text-center"><h3 class="font-display text-4xl font-bold text-[#FEFCE8] mb-4">Complete Payment</h3><p class="text-[#FEFCE8]/60 mb-10 font-medium text-lg">Scan to pay <strong class="text-[#FEFCE8] text-xl">₹' + AGENT.consultation_fee + '</strong> via UPI to secure your block.</p><div class="inline-block p-4 bg-dark border-2 border-white/10 rounded-lg shadow-none mb-6"><img src="' + qrUrl + '" alt="UPI QR Code" class="w-56 h-56 mx-auto"></div><div class="mb-10 text-center"><p class="text-xs text-[#FEFCE8]/50 uppercase tracking-widest font-bold mb-1">UPI ID</p><p class="text-[#FEFCE8] font-bold text-xl">' + AGENT.upi_id + '</p><p class="text-sm font-medium text-[#FEFCE8]/60 mt-2">Open your preferred UPI app (GPay, PhonePe, Paytm) to scan this code.</p></div><div class="flex flex-col gap-4 max-w-sm mx-auto"><button type="button" onclick="finalizeBooking()" class="w-full bg-green-500 hover:bg-green-600 text-white text-base py-4 font-bold tracking-wider transition-colors shadow-none rounded-sm uppercase">I Have Paid (WhatsApp)</button><button type="button" onclick="cancelPayment()" class="w-full bg-dark border border-white/20 text-[#FEFCE8]/60 py-4 font-bold tracking-wider hover:bg-white/5 transition-colors rounded-sm uppercase text-xs">Back to Details</button></div></div></div></div></div>';
+  
+  window.showPayment = function() {
+    document.getElementById('booking-step1').classList.add('hidden');
+    document.getElementById('booking-step2').classList.remove('hidden');
+    window.scrollTo({ top: document.getElementById('booking-step2').offsetTop - 100, behavior: 'smooth' });
+  };
+  window.cancelPayment = function() {
+    document.getElementById('booking-step2').classList.add('hidden');
+    document.getElementById('booking-step1').classList.remove('hidden');
+  };
+  window.finalizeBooking = function() {
+    const name = document.getElementById('c-name').value;
+    const topic = document.getElementById('c-topic').value;
+    const msg = 'Hi ' + AGENT.agent_firstname + ', I am ' + name + '. I have just completed the UPI payment of ₹' + AGENT.consultation_fee + ' for my consultation regarding: ' + topic + '. Please confirm.';
+    window.location.href = 'https://wa.me/' + AGENT.whatsapp_number + '?text=' + encodeURIComponent(msg);
+  };
+});
+</script>
+</main>
 </body>
 </html>
