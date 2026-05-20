@@ -1,286 +1,183 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title data-a="page_title">Available Properties | Arjun Real Estate</title>
-  <script src="../../re-client.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Agent</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: { extend: {
-        colors: {
-          mocha:'var(--brand-mocha, #6B4C3B)', 
-          navy:'var(--brand-navy, #0F172A)',
-          ivory:'var(--brand-ivory, #FEFCE8)', 
-          gold:'var(--brand-gold, #C5A880)',
-          cream:'var(--brand-cream, #F5F0E8)', 
-          mist:'var(--brand-mist, #E8E2D9)'
-        },
-        fontFamily: {
-          display:['"Playfair Display"','serif'],
-          body:['"Inter Tight"','sans-serif']
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0F172A',
+              mocha: '#6B4C3B',
+              gold: '#C5A880',
+              ivory: '#FEFCE8'
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body: ['"Inter Tight"', 'sans-serif'],
+          }
         }
-      }}
+      }
     }
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>
-<body class="font-body bg-ivory text-navy antialiased">
-  
-  <nav class="sticky top-0 z-50 bg-ivory/95 border-b border-mist shadow-sm transition-all duration-300">
-    <div class="max-w-[1200px] mx-auto px-4 md:px-8 lg:px-20 h-20 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 group">
-        <span class="text-2xl group-hover:scale-110 transition-transform duration-200">🏡</span>
-        <div class="flex flex-col leading-tight">
-          <span class="font-display font-bold text-mocha text-lg group-hover:text-navy transition-colors duration-200" data-a="agent_name">Arjun Mehta</span>
-          <span class="text-[10px] tracking-widest uppercase font-semibold opacity-70 text-navy" data-a="agent_city_tagline">Mumbai Real Estate</span>
-        </div>
-      </a>
-      <div class="hidden md:flex gap-8 items-center text-sm font-medium">
-        <a href="index.html" class="hover:text-mocha transition-colors nav-link ">Home</a>
-        <a href="communities.html" class="hover:text-mocha transition-colors nav-link">Communities</a>
-        <a href="listings.html" class="hover:text-mocha transition-colors nav-link text-mocha border-b-2 border-gold pb-1">Listings</a>
-        <a href="selling.html" class="hover:text-mocha transition-colors nav-link">Selling</a>
-        <a href="success-stories.html" class="hover:text-mocha transition-colors nav-link">Success Stories</a>
-        <a href="contact.html" class="hover:text-mocha transition-colors nav-link">Contact</a>
-        
-      </div>
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-navy hover:text-mocha focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-ivory border-t border-mist px-4 py-4 space-y-4 shadow-lg absolute w-full z-40">
-      <a href="index.html" class="block font-medium hover:text-mocha transition-colors nav-link ">Home</a>
-      <a href="communities.html" class="block font-medium hover:text-mocha transition-colors nav-link">Communities</a>
-      <a href="listings.html" class="block font-medium hover:text-mocha transition-colors nav-link text-mocha">Listings</a>
-      <a href="selling.html" class="block font-medium hover:text-mocha transition-colors nav-link">Selling</a>
-      <a href="success-stories.html" class="block font-medium hover:text-mocha transition-colors nav-link">Success Stories</a>
-      <a href="contact.html" class="block font-medium hover:text-mocha transition-colors nav-link">Contact</a>
-    </div>
-  </nav>
-
-  <main>
-    <section class="relative w-full h-[40vh] min-h-[300px] flex items-center justify-center text-center overflow-hidden">
-      <div class="absolute inset-0 z-0">
-        <img data-a-src="listings_hero_image" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1400&q=80" alt="Listing Hero" loading="lazy" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-r from-navy/70 to-mocha/50 z-10"></div>
-      </div>
-      <div class="relative z-20 max-w-2xl px-4 mx-auto text-white">
-        <span class="text-gold uppercase tracking-[0.2em] text-[10px] font-bold mb-4 fade-up block">OUR PORTFOLIO</span>
-        <h1 class="font-display font-bold text-4xl md:text-5xl mb-4 fade-up" style="transition-delay: 0.05s">Available Properties</h1>
-        <p class="text-white/90 font-light text-lg md:text-xl fade-up max-w-lg mx-auto" style="transition-delay: 0.1s">
-          Curated listings across <span data-a="agent_city">Mumbai</span>'s most sought-after neighborhoods.
-        </p>
-      </div>
-    </section>
-
-    <!-- Filter Bar -->
-    <section class="bg-cream sticky top-16 z-40 border-b border-mist shadow-sm">
-      <div class="max-w-[1200px] mx-auto px-4 md:px-8 lg:px-20 py-4 flex gap-4 overflow-x-auto hide-scrollbar whitespace-nowrap items-center">
-        <select id="dynamic-filter-neighborhoods" class="bg-transparent text-navy font-medium text-sm outline-none cursor-pointer border border-mist rounded px-3 py-2 shrink-0 hover:border-gold">
-          <option value="any">Neighborhood (Any)</option>
-        </select>
-        <select id="filter-type" class="bg-transparent text-navy font-medium text-sm outline-none cursor-pointer border border-mist rounded px-3 py-2 shrink-0 hover:border-gold">
-          <option value="any">Type (Any)</option>
-          <option value="House">House</option>
-          <option value="Condo">Condo</option>
-          <option value="Townhouse">Townhouse</option>
-          <option value="Plot">Plot</option>
-        </select>
-        <select id="filter-beds" class="bg-transparent text-navy font-medium text-sm outline-none cursor-pointer border border-mist rounded px-3 py-2 shrink-0 hover:border-gold">
-          <option value="any">Beds (Any)</option>
-          <option value="1">1+</option>
-          <option value="2">2+</option>
-          <option value="3">3+</option>
-          <option value="4">4+</option>
-        </select>
-        <select id="dynamic-filter-price" class="bg-transparent text-navy font-medium text-sm outline-none cursor-pointer border border-mist rounded px-3 py-2 shrink-0 hover:border-gold">
-          <option value="any">Price Range (Any)</option>
-          <option value="range1">Under ₹1Cr</option>
-          <option value="range2">₹1-2Cr</option>
-          <option value="range3">₹2-3Cr</option>
-          <option value="range4">₹3Cr+</option>
-        </select>
-        <select id="sort" class="bg-transparent text-navy font-medium text-sm outline-none cursor-pointer border border-mist rounded px-3 py-2 shrink-0 hover:border-gold">
-          <option value="newest">Sort: Newest</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-        </select>
-        <button id="apply-filters" class="bg-gold text-navy font-medium text-sm rounded px-6 py-2 shrink-0 hover:bg-navy hover:text-white transition-colors duration-200">Apply Filters</button>
-      </div>
-    </section>
-
-    <!-- Properties Grid -->
-    <section class="py-12 md:py-20 px-4 md:px-8 lg:px-20 max-w-[1200px] mx-auto min-h-[50vh]">
-      <div id="dynamic-properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <!-- Dynamic property cards injected here -->
-      </div>
-
-      <!-- Pagination -->
-      <div class="text-center pb-8 border-b border-mist mb-12">
-        <p class="text-navy/70 text-sm mb-4" id="pagination-text">Showing <span data-a="showing_count">6</span> of <span data-a="total_listings_count">143</span> properties</p>
-        <button class="text-mocha font-medium hover:text-gold transition-colors">Load More &rarr;</button>
-      </div>
-
-      <!-- CTA Strip -->
-      <div class="bg-cream  p-8 md:p-12 text-center shadow-sm">
-        <h2 class="text-2xl md:text-3xl font-display font-bold text-navy mb-6">Ready to Find Your Home?</h2>
-        <a href="contact.html" class="inline-flex items-center justify-center bg-gold text-navy font-medium h-[52px] px-8 rounded hover:scale-[1.03] transition-all shadow-md">Book a Free Consultation &rarr;</a>
-      </div>
-    </section>
-  </main>
-
-  <a data-a-href="whatsapp_link" href="https://wa.me/919876543210" target="_blank" class="fixed bottom-6 right-6 w-[60px] h-[60px] bg-[#25d366] rounded-full flex items-center justify-center shadow-lg z-40 hover:scale-[1.05] transition-transform duration-200 animate-[pulse_3s_infinite]">
-    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.567-10.563 5.824 0 10.561 4.741 10.562 10.563s-4.739 10.564-10.562 10.564z"/></svg>
-  </a>
-
-  <footer class="h-12 bg-navy text-white/50 px-4 md:px-10 flex items-center justify-between text-[10px] uppercase tracking-widest mt-auto">
-    <p data-a="footer_copyright">&copy; 2025 Arjun Mehta Realty | All Rights Reserved</p>
-    <div class="flex gap-6">
-      <a data-a-href="relocation_guide_link" href="contact.html" class="hover:text-gold transition-colors">Relocation Guide</a>
-      <a data-a-href="privacy_link" href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
-      <a data-a-href="terms_link" href="#" class="hover:text-gold transition-colors">Terms</a>
-    </div>
-  </footer>
-
   <style>
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    body { font-family: 'Inter Tight', sans-serif; background-color: #0F172A; color: #FEFCE8; }
+    h1, h2, h3, h4, .font-display { font-family: 'Playfair Display', serif; }
+    html { scroll-behavior: smooth; }
+    .border-gold { border-color: rgba(197, 168, 128, 0.3); }
+    .bg-mocha { background-color: #6B4C3B; }
+    .text-gold { color: #C5A880; }
+    .bg-dark { background-color: #0a101f; }
   </style>
+  
+<script>
+const AGENT = {
+  // IDENTITY
+  agent_name: "Arjun Mehta",
+  agent_firstname: "Arjun",
+  city: "Mumbai",
+  city_tagline: "Mumbai Real Estate",
+  tagline: "Mumbai's Top 1% Agent",
+  established: "2013",
 
-  <script>
-    const mBtn = document.getElementById('mobile-menu-btn');
-    const mMenu = document.getElementById('mobile-menu');
-    if(mBtn && mMenu) mBtn.addEventListener('click', () => mMenu.classList.toggle('hidden'));
+  // CONTACT
+  phone: "+91 98765 43210",
+  whatsapp_number: "919876543210",
+  whatsapp_message: "Hi Arjun, I am interested in a property consultation",
+  email: "hello@arjunrealty.com",
+  office_address: "Ground Floor, Arjun Chambers, MG Road,",
+  office_city: "Mumbai - 400001",
+  office_hours: "Mon-Sat: 9am-7pm",
+  maps_link: "https://maps.google.com",
+  upi_id: "arjunmehta@upi",
+  consultation_fee: "500",
 
-    // Handle dynamic data load
-    window.addEventListener('agentLoaded', (e) => {
-        const data = e.detail || {};
-        
-        // 1. Populate Neighborhoods Filter
-        if (data.neighborhoods && Array.isArray(data.neighborhoods)) {
-            const hForm = document.getElementById('dynamic-filter-neighborhoods');
-            if (hForm) {
-               hForm.innerHTML = '<option value="any">Neighborhood (Any)</option>' + data.neighborhoods.map(n => `<option value="${n}">${n}</option>`).join('');
-            }
-        }
+  // HERO
+  hero_image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80",
+  hero_headline: "Your Trusted Guide to Mumbai's Finest Properties",
+  hero_subtext: "Boutique service. Exceptional results. Your next home begins here.",
+  trust_badge: "4.9★ | 120+ Families Served | Mumbai's Top 1% Agent",
 
-        // 2. Populate Price Ranges (if custom provided)
-        if (data.price_ranges && Array.isArray(data.price_ranges)) {
-            const pForm = document.getElementById('dynamic-filter-price');
-            if (pForm) {
-               pForm.innerHTML = '<option value="any">Price Range (Any)</option>' + data.price_ranges.map(pr => `<option value="${pr.value}">${pr.label}</option>`).join('');
-            }
-        }
+  // AGENT PROFILE
+  agent_photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+  agent_bio: "A decade of local experience dedicated to honest advice and exceptional results.",
+  credentials: "12 Yrs | #1 in Mumbai 2024 | 4.9★",
 
-        // 3. Render Properties
-        if (data.all_properties && Array.isArray(data.all_properties)) {
-            const grid = document.getElementById('dynamic-properties-grid');
-            const agentName = document.querySelector('[data-a="agent_name"]')?.textContent || 'Agent';
-            if (grid) {
-               grid.innerHTML = data.all_properties.map((p, i) => `
-                <div class="prop-card bg-white overflow-hidden group shadow-sm border border-mist fade-up relative hover:-translate-y-[8px] hover:shadow-xl transition-all duration-300 opacity-100 translate-y-0" 
-                     data-neighborhood="${p.neighborhood}" data-type="${p.type}" data-beds="${p.beds}" data-price="${p.price_val}">
-                  <div class="h-[240px] overflow-hidden"><img src="${p.image_url}" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-300"></div>
-                  <span class="absolute top-4 left-4 bg-gold text-navy text-[0.7rem] tracking-widest font-bold px-2 py-1 rounded">${p.badge || 'FOR SALE'}</span>
-                  <div class="p-6 flex flex-col h-[calc(100%-240px)]">
-                    <p class="font-display font-bold text-mocha text-[1.75rem] mb-1">${p.price}</p>
-                    <p class="text-navy font-medium mb-1">${p.address}</p>
-                    <p class="text-navy/60 text-sm mb-3">${p.neighborhood}</p>
-                    <div class="flex flex-wrap gap-2 text-xs text-navy/70 mb-4">
-                      <span class="bg-cream px-2 py-1 rounded">${p.beds} Beds</span>
-                      <span class="bg-cream px-2 py-1 rounded">${p.baths} Baths</span>
-                      <span class="bg-cream px-2 py-1 rounded">${p.sqft} Sqft</span>
-                      ${p.pkg ? `<span class="bg-cream px-2 py-1 rounded">${p.pkg} Pkg</span>` : ''}
-                    </div>
-                    <p class="text-navy/80 text-sm mb-4 line-clamp-2">${p.description}</p>
-                    <p class="text-[0.75rem] italic text-mocha mb-4">Listed by ${agentName}</p>
-                    <a href="contact.html" class="mt-auto block text-center bg-gold/10 text-navy border border-gold font-medium h-[44px] leading-[44px] rounded group-hover:bg-gold transition-colors duration-200">Schedule Viewing &rarr;</a>
-                  </div>
-                </div>
-               `).join('');
-               
-               // Update filtering script to be aware of the new elements
-               window.rebindFilters && window.rebindFilters();
-            }
-        }
+  // STATS
+  stat_sale_ratio: "94%",
+  stat_above_asking: "₹12L",
+  stat_days: "18",
+  stat_sales: "120+",
+  private_network: "800+",
+
+  // MARKET DATA
+  market_median: "₹2.4Cr",
+  market_days: "18 Days",
+  market_listings: "143",
+  market_updated: "Updated May 2025",
+
+  // PROPERTIES
+  properties: [
+    {label:"JUST LISTED", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", price:"₹1.85Cr", address:"124 Riverside Lane", neighborhood:"Riverside", type:"House", beds:"3", baths:"2", sqft:"1,800", desc:"A stunning riverside property with modern finishes and serene garden."},
+    {label:"FOR SALE", image:"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80", price:"₹2.10Cr", address:"88 Heritage Avenue", neighborhood:"Heritage Hill", type:"Condo", beds:"2", baths:"2", sqft:"1,450", desc:"Classic charm combined with modern amenities in heritage condo."},
+    {label:"UNDER OFFER", image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80", price:"₹4.50Cr", address:"5 Downtown Boulevard", neighborhood:"Downtown Core", type:"House", beds:"4", baths:"4", sqft:"3,200", desc:"Luxurious downtown retreat with panoramic skyline views."},
+    {label:"FOR SALE", image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", price:"₹95L", address:"32B City Center Plaza", neighborhood:"Downtown Core", type:"Condo", beds:"1", baths:"1", sqft:"750", desc:"Perfect starter home or investment property in city center."},
+    {label:"JUST LISTED", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", price:"₹2.75Cr", address:"44 Riverfront Walk", neighborhood:"Riverside", type:"Townhouse", beds:"3", baths:"3", sqft:"2,200", desc:"Spacious townhouse with private balconies and river trail access."},
+    {label:"FOR SALE", image:"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80", price:"₹3.80Cr", address:"112 Victoria Lane", neighborhood:"Heritage Hill", type:"House", beds:"4", baths:"3", sqft:"2,800", desc:"Magnificent detached home with original woodwork and gardens."}
+  ],
+
+  // COMMUNITIES
+  communities: [
+    {name:"Downtown Core", tagline:"The heartbeat of city life.", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", avg_price:"₹3.2Cr", walk_score:"98/100", schools:"7/10", tags:["Nightlife","Near Metro","Condos"]},
+    {name:"Riverside", tagline:"Serene mornings. Vibrant weekends.", image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", avg_price:"₹2.8Cr", walk_score:"85/100", schools:"8/10", tags:["Family-Friendly","Nature Trails"]},
+    {name:"Heritage Hill", tagline:"Old-world charm. New-world comfort.", image:"https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80", avg_price:"₹4.1Cr", walk_score:"70/100", schools:"9/10", tags:["Historic","Large Plots"]},
+    {name:"Greenview", tagline:"Space, parks, and top schools.", image:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", avg_price:"₹2.2Cr", walk_score:"60/100", schools:"10/10", tags:["Top Schools","Gated"]},
+    {name:"Lakeside", tagline:"Waterfront living at its finest.", image:"https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80", avg_price:"₹3.5Cr", walk_score:"75/100", schools:"8/10", tags:["Views","Luxury"]},
+    {name:"Northgate", tagline:"The emerging address everyone's watching.", image:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", avg_price:"₹1.5Cr", walk_score:"80/100", schools:"6/10", tags:["Investment","New Dev"]}
+  ],
+
+  // TESTIMONIALS
+  testimonials: [
+    {initials:"RS", name:"Rohan & Simran", detail:"Bought in Lakeside", text:"We closed in 28 days, ₹12L under budget. Arjun simplified everything."},
+    {initials:"KM", name:"Kavya M.", detail:"Sold in Heritage Hill", text:"Sold in 11 days at 8% above asking. Absolutely brilliant strategy."},
+    {initials:"AS", name:"Ankit S.", detail:"Relocated to Mumbai", text:"Felt like a trusted local friend throughout the entire process."},
+    {initials:"DP", name:"Deepak P.", detail:"Sold in Bandra West", text:"Arjun's marketing strategy was unmatched. Multiple offers received."},
+    {initials:"MJ", name:"Meera J.", detail:"Bought in South Mumbai", text:"Bought my first luxury apartment with ease. 100% transparency."},
+    {initials:"VN", name:"Varun & Neha", detail:"Bought in Bandra", text:"Always reachable, clearly laid out our options. True professional!"}
+  ],
+
+  // SELLER TESTIMONIALS
+  seller_testimonials: [
+    {initials:"MP", name:"Meera P.", detail:"Sold 4BHK in Greenview", text:"Sold in 11 days, ₹18L above asking. The pricing strategy was genius."},
+    {initials:"VT", name:"Vikram T.", detail:"Sold Villa in Heritage Hill", text:"Stress-free from start to finish. The staging transformed our home."}
+  ],
+
+  // NEIGHBORHOODS FOR SEARCH
+  neighborhoods: ["Downtown Core", "Riverside", "Heritage Hill", "Greenview", "Lakeside", "Northgate"],
+
+  // FAQ
+  coverage_area: "All of Mumbai, with secondary coverage for select luxury properties in nearby districts."
+};
+
+document.title = AGENT.agent_name + ' | ' + AGENT.city_tagline;
+
+function renderCommon() {
+  const commonNav = '<nav class="bg-[#0F172A] text-[#FEFCE8] sticky top-0 z-50 border-b border-gold shrink-0"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between h-20 items-center"><div class="flex-shrink-0 flex flex-col justify-center"><a href="index.html" class="font-display text-2xl font-bold tracking-wider text-gold leading-none">' + AGENT.agent_name + '</a><span class="text-[10px] uppercase tracking-widest text-[#FEFCE8]/60 mt-1 leading-none">' + AGENT.city_tagline + '</span></div><div class="hidden md:flex space-x-8 items-center"><a href="index.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Home</a><a href="listings.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Properties</a><a href="selling.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Selling</a><a href="communities.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Communities</a><a href="success-stories.html" class="hover:text-gold transition-colors font-body text-sm font-medium">Success Stories</a><a href="contact.html" class="bg-[#C5A880] text-[#0F172A] px-5 py-2 rounded-sm font-bold hover:bg-yellow-600 transition-colors uppercase tracking-wide text-xs">Consultation</a></div><div class="md:hidden flex items-center"><button id="mobile-menu-btn" class="text-white hover:text-gold focus:outline-none p-2"><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button></div></div></div><div id="mobile-menu" class="hidden md:hidden bg-[#0F172A] pb-4 border-t border-gold"><a href="index.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Home</a><a href="listings.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Properties</a><a href="selling.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Selling</a><a href="communities.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Communities</a><a href="success-stories.html" class="block px-4 py-3 text-sm hover:bg-white/10 transition-colors">Success Stories</a><a href="contact.html" class="block px-4 py-3 text-sm text-gold font-bold transition-colors">Contact</a></div></nav>';
+
+  const commonFooter = '<footer class="bg-[#0F172A] text-[#FEFCE8] pt-16 pb-8 border-t border-gold mt-auto shrink-0"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12"><div class="col-span-1 md:col-span-2"><h2 class="font-display text-3xl font-bold text-gold mb-4">' + AGENT.agent_name + '</h2><p class="text-[#FEFCE8]/50 mb-6 max-w-sm line-clamp-3">' + AGENT.hero_subtext + '</p><p class="text-sm font-medium text-[#FEFCE8]/60">Est. ' + AGENT.established + '</p></div><div><h3 class="font-bold mb-4 uppercase tracking-wider text-sm text-gold">Navigation</h3><ul class="space-y-3 text-[#FEFCE8]/50 text-sm"><li><a href="listings.html" class="hover:text-white transition-colors">Properties</a></li><li><a href="selling.html" class="hover:text-white transition-colors">Selling</a></li><li><a href="communities.html" class="hover:text-white transition-colors">Communities</a></li><li><a href="success-stories.html" class="hover:text-white transition-colors">Success Stories</a></li><li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li></ul></div><div><h3 class="font-bold mb-4 uppercase tracking-wider text-sm text-gold">Contact</h3><ul class="space-y-3 text-[#FEFCE8]/50 text-sm"><li class="flex items-center gap-2"><svg class="w-4 h-4 text-gold opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>' + AGENT.phone + '</li><li class="flex items-center gap-2"><svg class="w-4 h-4 text-gold opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>' + AGENT.email + '</li><li class="flex items-start gap-2 mt-4"><svg class="w-5 h-5 text-gold opacity-70 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>' + AGENT.office_address + '<br/>' + AGENT.office_city + '</span></li><li class="pl-7 mt-1"><a href="' + AGENT.maps_link + '" target="_blank" class="text-gold hover:text-white transition-colors underline decoration-brand-gold/50 underline-offset-4 text-xs font-semibold">Get Directions</a></li></ul></div></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-gold text-center text-[#FEFCE8]/60 text-sm flex flex-col md:flex-row justify-between items-center gap-4"><span>&copy; ' + new Date().getFullYear() + ' ' + AGENT.agent_name + '. All rights reserved.</span><span class="text-xs">Built for Excellence in Real Estate</span></div></footer>';
+
+  const waUrl = 'https://wa.me/' + AGENT.whatsapp_number + '?text=' + encodeURIComponent(AGENT.whatsapp_message);
+  const floatingWA = '<a href="' + waUrl + '" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-none hover:bg-green-600 transition-transform hover:scale-110 z-50 flex items-center justify-center"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>';
+
+  document.body.insertAdjacentHTML('afterbegin', commonNav);
+  document.body.insertAdjacentHTML('beforeend', commonFooter);
+  document.body.insertAdjacentHTML('beforeend', floatingWA);
+
+  var btn = document.getElementById('mobile-menu-btn');
+  if (btn) {
+    btn.addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
     });
+  }
+}
+document.addEventListener('DOMContentLoaded', renderCommon);
+</script>
 
-    // Filtering Logic
-    document.addEventListener("DOMContentLoaded", () => {
-      const applyBtn = document.getElementById('apply-filters');
-      const grid = document.getElementById('dynamic-properties-grid');
-      const countTextSpan = document.querySelector('[data-a="showing_count"]');
-      
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlHood = urlParams.get('n');
-      if(urlHood) {
-        setTimeout(() => {
-          const hoodSelect = document.getElementById('dynamic-filter-neighborhoods');
-          if(hoodSelect && hoodSelect.querySelector(`option[value="${urlHood}"]`)) {
-            hoodSelect.value = urlHood;
-          }
-        }, 500); // small delay to wait for agentLoaded if async
-      }
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+<main class="flex-grow w-full">
+<div id="page-listings"></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('page-listings');
+  const neighborhoodOptions = AGENT.neighborhoods.map(n => '<option value="' + n + '">' + n + '</option>').join('');
+  
+  function renderProps(filterNeigh, filterType) {
+    let result = AGENT.properties;
+    if(filterNeigh) result = result.filter(p => p.neighborhood === filterNeigh);
+    if(filterType) result = result.filter(p => p.type === filterType);
+    if (result.length === 0) return '<div class="col-span-full py-20 text-center bg-dark rounded-sm border border-white/10 shadow-none"><h3 class="text-xl font-display font-bold text-[#FEFCE8] mb-2">No properties found</h3><p class="text-[#FEFCE8]/60 mb-4">Try adjusting your filters to see more results.</p></div>';
+    return result.map(p => '<div class="bg-dark rounded-sm overflow-hidden shadow-none hover:border-gold transition-colors duration-300 transition-shadow border border-white/10 flex flex-col group"><div class="relative h-64 overflow-hidden flex-shrink-0 bg-white/5"><div class="absolute top-4 left-4 bg-[#C5A880] text-[#0F172A] text-[10px] font-bold px-2 py-1 uppercase tracking-tighter z-10 uppercase tracking-wider rounded-sm shadow-none">' + p.label + '</div><img src="' + p.image + '" alt="' + p.address + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy"></div><div class="p-6 flex flex-col flex-grow"><h3 class="text-2xl font-bold font-display text-[#FEFCE8] mb-2">' + p.price + '</h3><p class="text-sm text-[#FEFCE8]/60 mb-2 font-medium">' + p.address + ', ' + p.neighborhood + '</p><div class="text-xs text-white bg-[#C5A880] inline-block px-2 py-1 rounded-sm uppercase tracking-wider font-bold mb-4 w-max">' + p.type + '</div><div class="flex flex-wrap justify-between text-sm text-[#FEFCE8]/80 mb-4 bg-white/5 p-3 rounded-sm font-medium"><span><strong>' + p.beds + '</strong> Beds</span><span class="text-[#FEFCE8]/60">|</span><span><strong>' + p.baths + '</strong> Baths</span><span class="text-[#FEFCE8]/60">|</span><span><strong>' + p.sqft + '</strong> Sq.Ft.</span></div><p class="text-sm text-[#FEFCE8]/70 line-clamp-2 flex-grow mb-6">' + p.desc + '</p><a href="https://wa.me/' + AGENT.whatsapp_number + '?text=Hi ' + AGENT.agent_firstname + ', I am interested in ' + p.address + '" target="_blank" class="block w-full text-center py-3 border-2 border-white/10 text-[#FEFCE8] font-bold hover:bg-[#0F172A] hover:text-white transition-colors text-sm rounded-sm uppercase tracking-wider">Inquire Now</a></div></div>').join('');
+  }
 
-      window.rebindFilters = function() {
-        const cards = Array.from(document.querySelectorAll('.prop-card'));
-        
-        applyBtn.addEventListener('click', () => {
-          const hood = document.getElementById('dynamic-filter-neighborhoods').value;
-          const type = document.getElementById('filter-type').value;
-          const beds = document.getElementById('filter-beds').value;
-          const price = document.getElementById('dynamic-filter-price').value;
-          const sort = document.getElementById('sort').value;
+  container.innerHTML = '<div class="bg-[#0F172A] py-24 px-4 text-center relative overflow-hidden"><div class="relative z-10"><h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">Exclusive Properties</h1><p class="text-gold text-lg max-w-2xl mx-auto font-medium">Discover the finest homes currently available in ' + AGENT.city + '.</p></div></div><div class="bg-white/5 py-16"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="bg-dark p-6 shadow-none border border-white/10 rounded-sm mb-12 flex flex-col md:flex-row gap-4 items-center justify-between"><div class="text-[#FEFCE8] font-bold text-lg md:mb-0 mb-2 w-full md:w-auto">Find Your Home</div><div class="flex flex-col md:flex-row gap-4 w-full md:w-auto"><select id="filter-neigh" class="p-3 bg-white/5 border border-white/20 rounded-sm w-full md:w-48 text-sm font-bold text-[#FEFCE8]/80 outline-none focus:border-gold focus:ring-1 focus:ring-brand-gold transition-all"><option value="">All Neighborhoods</option>' + neighborhoodOptions + '</select><select id="filter-type" class="p-3 bg-white/5 border border-white/20 rounded-sm w-full md:w-48 text-sm font-bold text-[#FEFCE8]/80 outline-none focus:border-gold focus:ring-1 focus:ring-brand-gold transition-all"><option value="">All Property Types</option><option value="House">House</option><option value="Condo">Condo</option><option value="Townhouse">Townhouse</option></select></div></div><div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">' + renderProps('', '') + '</div></div></div>';
 
-          let visibleCount = 0;
-          let visibleCards = [];
-
-          cards.forEach(card => {
-            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-            let show = true;
-            if(hood !== 'any' && card.dataset.neighborhood !== hood) show = false;
-            if(type !== 'any' && card.dataset.type !== type) show = false;
-            if(beds !== 'any' && parseInt(card.dataset.beds) < parseInt(beds)) show = false;
-            
-            // Note: simple mock price filter, assume dataset.price is a number
-            const p = parseInt(card.dataset.price || 0);
-            if(price === 'range1' && p >= 100) show = false;
-            else if(price === 'range2' && (p < 100 || p > 200)) show = false;
-            else if(price === 'range3' && (p <= 200 || p > 300)) show = false;
-            else if(price === 'range4' && p <= 300) show = false;
-
-            if(show) {
-              card.style.display = 'flex';
-              setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
-              visibleCount++;
-              visibleCards.push(card);
-            } else {
-              card.style.opacity = '0'; 
-              card.style.transform = 'translateY(8px)';
-              setTimeout(() => { card.style.display = 'none'; }, 300);
-            }
-          });
-
-          visibleCards.sort((a,b) => {
-            if(sort === 'price-asc') return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-            if(sort === 'price-desc') return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-            return 0; // newest
-          });
-
-          setTimeout(() => {
-            visibleCards.forEach(c => grid.appendChild(c));
-            if(countTextSpan) countTextSpan.textContent = visibleCount;
-          }, 310);
-        });
-
-        if(urlHood) applyBtn.click();
-      };
-      
-      // Attempt bind on load
-      window.rebindFilters();
-    });
-  </script>
+  setTimeout(() => {
+    const fn = document.getElementById('filter-neigh');
+    const ft = document.getElementById('filter-type');
+    const grid = document.getElementById('properties-grid');
+    function update() { grid.innerHTML = renderProps(fn.value, ft.value); }
+    fn.addEventListener('change', update);
+    ft.addEventListener('change', update);
+  }, 100);
+});
+</script>
+</main>
 </body>
 </html>
